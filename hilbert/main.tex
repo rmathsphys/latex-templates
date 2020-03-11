@@ -1,0 +1,40 @@
+\documentclass{hilbert}
+
+  \usepackage{lipsum} % popular junk for devs
+  \input{info/metadata.tex} % document properties
+  \usepackage[hidelinks]{hyperref}
+  \usepackage{graphicx}
+    \graphicspath{{images/}}
+
+\begin{document}
+
+\frontmatter
+  % \halftitlepage
+  \halftitlepage[Custom text instead of the Title]
+
+  % \artpage{test1}
+  \artpage{test1}[And here comes a caption!]
+  % \artpage[<width>]{<imagefile>}[<captions>]
+  
+  \input{additional/fulltitle}
+  \input{additional/copyright}
+  \input{additional/dedication}
+  \tableofcontents
+  \pagestyle{fancy-front}
+  \input{additional/forward}
+  \input{additional/preface}
+
+\mainmatter
+  \input{chapters/sunflower.tex}
+  
+  \blankpage
+  \blankpage[With a custom `page left blank' message]
+
+  \input{chapters/greektoys.tex}
+  \input{chapters/rockyroad.tex}
+
+\backmatter
+  \input{additional/acknowledgements.tex}
+  \input{additional/aboutauthor.tex}
+
+\end{document}
