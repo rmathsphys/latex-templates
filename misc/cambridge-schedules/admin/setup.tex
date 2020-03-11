@@ -1,0 +1,33 @@
+% Typography
+\usepackage{microtype}
+\usepackage{parskip}
+
+% Layout & Structure Elements
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{titlesec}
+
+% Graphics & Maths
+% Should be optimised
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amssymb}
+
+% Setup the page layout globally
+\geometry{a4paper, landscape, nomarginpar, nofoot, includehead}
+\geometry{top=10mm, bottom=15mm, left=20mm, right=20mm, headsep=7mm}
+
+% Sort out the headers & footers for each page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textbf{\MakeUppercase{\headertitle}}}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% Some fine-tuning for column separation
+\setlength\columnsep{10mm}
+
+% Re-formatting section & subsection titles
+\titleformat{\section}{\bfseries\Large\MakeUppercase}{}{0em}{}
+\titleformat{\subsection}{\bfseries\large}{}{0em}{}
