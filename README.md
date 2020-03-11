@@ -8,4 +8,4 @@ A (growing) handmade collection of latex templates, classes and style files.
 + `noether`: For assignments, exercises and example sheets.
 + `wade`: For letters.
 + `hilbert`: For beautiful yet simple books.
-+ `cambridge-schedules`: An attempt at re-creating the Cambridge Maths Tripos Schedules PDF in Latex. Keeping it easy to use.
++ `misc/cambridge-schedules`: An attempt at re-creating the Cambridge Maths Tripos Schedules PDF in Latex. Keeping it easy to use.
