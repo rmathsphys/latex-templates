@@ -1,0 +1,29 @@
+% Question-level list
+\newlist{qlist}{enumerate}{1}
+\setlist[qlist]{leftmargin=12mm, labelwidth=8mm, labelsep=4mm, label={\bfseries\arabic*.\hspace{\fboxsep}}, listparindent=0mm, itemindent=0mm}
+
+% Main question numering counter
+\newcounter{qnum}
+
+% Numbered Questions: Normal numbering & optional title
+\DeclareDocumentEnvironment{nquest}{o}
+  {
+    \begin{qlist}
+    \setcounter{qlisti}{\value{qnum}}\refstepcounter{qnum}
+    \item\IfValueTF{#1}{{\sffamily\bfseries #1\\}}{}
+  }
+  {\end{qlist}\medskip}
+
+% Numbered Questions: Framed numbering & optional title
+\DeclareDocumentEnvironment{nquest*}{o}
+  {
+    \begin{qlist}[label={\fbox{\bfseries\arabic*.}}]
+    \setcounter{qlisti}{\value{qnum}}\refstepcounter{qnum}
+    \item\IfValueTF{#1}{{\sffamily\bfseries #1\\}}{}
+  }
+  {\end{qlist}\medskip}
+
+% Unumbered Questions: Mandatory title
+\DeclareDocumentEnvironment{quest}{m}
+  {\begin{qlist}[label={}]\item{\sffamily\bfseries #1\\}}
+  {\end{qlist}\medskip}
