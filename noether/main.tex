@@ -1,10 +1,13 @@
-\documentclass[11pt]{noether}
+\documentclass[11pt,many]{noether}
+
+  \usepackage{mathy}
 
   \author{Author M. Name}
-  \institute{Maths \& Physics}
+  \institute{University of Awesome}
+  \coursetitle{Maths \& Physics}
   \documenttitle{Example Sheet 3}
   \moduletitle{Quantum Gravity}
-  \deadline{9am on Sunday, 30 February 2020}
+  \deadline{4am on Sunday, 30 February 2020}
 
   % \selecttitlea %(default)
   % \selecttitleb
@@ -21,6 +24,7 @@
 
 % Start by typsetting the title & other key information
 % This comes in multiple styles. Activate them in the preamble.
+% Or skip this and write your own (mini) style here.
 \maketitle
 
 % The rubric is optional; but it is rarely a good idea to leave it out.
@@ -31,7 +35,7 @@
 \end{rubric}
 
 % Add section headings (if you must!)
-\section{I. Section Heading}
+\section{Section Heading}
 If the assignment is going to be lengthy or is naturally divided into different parts then use the section headings to separate these parts. For example, you might want to split the assignment into three sections: Warm-up questions, Required questions \& Extension questions. The sections are not numbered by default because assignments shouldn't have many section headings in the first place -- in fact none are really needed!
 
 % I only know of one professor who uses this sectioned layout.
@@ -51,25 +55,29 @@ There are 5 different types of question styles -- in terms of how they are numbe
   \begin{enumerate}
     \item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
     \item Laboris nisi ut aliquip ex ea commodo consequat laboris nisi ut aliquip ex ea commodo consequat laboris nisi ut aliquip ex ea commodo laboris nisi ut aliquip ex ea commodo consequat.
+    \begin{enumerate}
+      \item Somthing here.
+      \item somthing else here!
+    \end{enumerate}
     \item Laboris nisi ut aliquip ex ea commodo consequat.
   \end{enumerate}
   \hint{Google it.}
 \end{nquest}
 
 % Question type: Numbered & framed. Subject-line: Not provided.
-\begin{nquest*}
+\begin{nfquest}
   This is the second simplest format of questions. It can be used to indicate a `required' question.
-\end{nquest*}
+\end{nfquest}
 
 % Question type: Numbered & framed. Subject-line: Provided.
-\begin{nquest*}[Subject. E.g: Angular Momentum Algebra]
+\begin{nfquest}[Subject. E.g: Angular Momentum Algebra]
   Same as the last question but this time with a subject line.
   \begin{enumerate}
     \item Aliquip ex ea commodo consequat laboris nisi ut aliquip ex ea commodo consequat.
     \item Laboris nisi ut aliquip ex ea commodo consequat.
     \item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
   \end{enumerate}
-\end{nquest*}
+\end{nfquest}
 
 % Question type: Not numbered. Subject-line: Mandatory.
 \begin{quest}{Subject. E.g: Geodesics on a Torus}
@@ -80,22 +88,22 @@ There are 5 different types of question styles -- in terms of how they are numbe
 
 A few more questions to fill up some space.
 
-\begin{nquest}
+\begin{nfquest}
   Do what Heisenberg did but quicker and better. Also, derive and completely solve Dirac equation, assuming only basic set theory. \totalmarks{5}
-\end{nquest}
+\end{nfquest}
 
 This is just an example of some text that has been inserted between two questions. It is not a part of either of these two questions, so, it doesn't affect their formatting. Now, clearly, there is no reason to be limited to text: you can also add graphics, links, etc. Or add nothing at all and keep things simple and clear.
 
-\begin{nquest*}
+\begin{nfquest}
   Compute all non-trivial zeros of the following function:
   \begin{equation*}
     \zeta(s) = \sum_{n=0}^{\infty} \frac{1}{n^s}
   \end{equation*} \totalmarks{2}
-\end{nquest*}
+\end{nfquest}
 
-\begin{nquest}
+\begin{nfquest}
   State the Maxwell's equations of electromagnetic radiation.
-\end{nquest}
+\end{nfquest}
 
 \begin{nquest}
   \begin{enumerate}
@@ -106,7 +114,7 @@ This is just an example of some text that has been inserted between two question
   \end{enumerate}
 \end{nquest}
 
-\begin{nquest*}
+\begin{nfquest}
   Which of the following correctly describes electrons?
   \begin{enumerate}
     \item Leptons with charge $-1$.
@@ -114,7 +122,7 @@ This is just an example of some text that has been inserted between two question
     \item Bosons \dots hahaha this one is so wrong!
     \item Leptons with charge $0$.
   \end{enumerate}
-\end{nquest*}
+\end{nfquest}
 
 % Finally some more text. Maybe add some links to learning resources?
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

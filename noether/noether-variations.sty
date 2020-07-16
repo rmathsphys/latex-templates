@@ -5,20 +5,20 @@
 % Default one:
 \newcommand{\@@titlecodea}{
   {\itshape\uauthor\hfill\uinstitute\par\vspace{1mm}}
-  {\centering{\sffamily\large\bfseries\umoduletitle\ // \udocumenttitle}\par(\textit{Deadline: \udeadline})\par}
+  {\centering{\sffamily\Large\bfseries\umoduletitle\ // \udocumenttitle}\par(\textit{Deadline: \udeadline})\par}
 }
 
 % Other variations:
 \newcommand{\@@titlecodeb}{
   {\itshape\uauthor\hfill\uinstitute\par\vspace{1mm}}
-  {\centering{\sffamily\large\bfseries\umoduletitle\ // \udocumenttitle}\par}
+  {\centering{\sffamily\Large\bfseries\umoduletitle\ // \udocumenttitle}\par}
 }
 \newcommand{\@@titlecodec}{
   {\sffamily\scshape\large\umoduletitle\hfill\uauthor\par\vspace{1mm}}
-  {\centering\large\textbf{\udocumenttitle}\\{\small(\textit{Deadline: \udeadline})}\par}
+  {\centering\Large\textbf{\udocumenttitle}\\{\small(\textit{Deadline: \udeadline})}\par}
 }
 \newcommand{\@@titlecoded}{
-  {\bfseries\large\umoduletitle\hfill\udocumenttitle\\}
+  {\bfseries\Large\umoduletitle\hfill\udocumenttitle\\}
   {\itshape\uauthor\hfill(Deadline: \udeadline)\par}
 }
 
@@ -29,11 +29,11 @@
 % RUBRIC: DEFAULT AND VARIATIONS
 %----------------------------------------------------------------------------------------
 % Default one:
-\newcommand{\@@rubricdefaultstart}{\itshape\rule{\textwidth}{0.2mm}\medskip\\}
-\newcommand{\@@rubricdefaultend}{\normalfont\newline\rule{\textwidth}{0.2mm}\par\medskip}
+\newcommand{\@@rubricdefaultstart}{\medskip\rule{\textwidth}{0.2mm}\medskip\small\\}
+\newcommand{\@@rubricdefaultend}{\par\rule{\textwidth}{0.2mm}\par\medskip\normalfont}
 
 % Other variations:
-\newcommand{\@@rubricboxedstart}{\medskip\begin{center}\begin{minipage}{0.8\textwidth}\begin{colbox}\itshape}
+\newcommand{\@@rubricboxedstart}{\medskip\begin{center}\begin{minipage}{0.8\textwidth}\begin{colbox}\small}
 \newcommand{\@@rubricboxedend}{\end{colbox}\end{minipage}\end{center}\par\medskip}
 
 % Currently selected:
