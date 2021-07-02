@@ -1,0 +1,61 @@
+%!TEX TS-options = --shell-escape
+\documentclass{dirac}
+
+\usepackage{lipsum}
+% \usepackage{mathsphystools}
+% \usepackage[chapter]{thmstyles}
+
+\input{additional/metadata.tex} % document properties
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\begin{document}
+
+\frontmatter
+  % \halftitlepage
+  % OR
+  \halftitlepage[Custom Title]
+
+  % \blankpage
+  % OR
+  % \artpage{test1}
+  % OR
+  \artpage[0.75\linewidth]{test1}[Caption]
+  
+  \input{additional/fulltitle}
+  \input{additional/copyright}
+  \input{additional/dedication}
+  \tableofcontents
+  \pagestyle{fancy-pagenum}
+  \input{additional/forward}
+  \input{additional/preface}
+
+\mainmatter
+  \begin{partback}[Maths]{Physics}
+  \lipsum[1-3]
+  \end{partback}
+  \input{chapters/chapter-namea.tex}
+  \input{chapters/chapter-nameb.tex}
+  \input{chapters/chapter-namec.tex}
+  \input{chapters/chapter-named.tex}
+
+  \part[Biology]{Chemistry}
+  \input{chapters/chapter-namea.tex}
+  \input{chapters/chapter-nameb.tex}
+  \input{chapters/chapter-namec.tex}
+  \input{chapters/chapter-named.tex}
+
+\appendix
+  \input{chapters/appendix-namea.tex}
+  \input{chapters/appendix-nameb.tex}
+
+\backmatter
+  \input{additional/acknowledgements}
+  \input{additional/aboutauthor}
+
+\nocite{*}
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography{references}
+
+\end{document}

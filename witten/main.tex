@@ -1,0 +1,66 @@
+%!TEX TS-options = --shell-escape
+\documentclass[10pt]{witten}
+
+\usepackage{lipsum}
+\usepackage{changepage}
+% \usepackage{mathsphystools}
+% \usepackage[chapter]{thmstyles}
+
+\input{additional/metadata.tex} % document properties
+
+\usepackage{graphicx}
+  \graphicspath{{images/}}
+
+% \geometry{showframe}
+
+\begin{document}
+
+\frontmatter
+  \onecolumn
+  \halftitlepage
+  % OR
+  % \halftitlepage[Custom Title]
+  
+  % \blankpage
+  % OR
+  % \artpage{test1}
+  % OR
+  \artpage[0.75\linewidth]{test1}[Caption]
+  
+  \input{additional/fulltitle}
+  \input{additional/copyright}
+  \input{additional/dedication}
+  
+  \twocolumn
+  \pagestyle{fancy-pagenum}
+  \maintoc
+
+  \input{additional/forward}
+  \input{additional/preface}
+
+\mainmatter
+  \part{Physics}
+  \input{chapters/chapter-namea.tex}
+  \input{chapters/chapter-nameb.tex}
+  \input{chapters/chapter-namec.tex}
+  \input{chapters/chapter-named.tex}
+
+  \part[Biology]{Chemistry}
+  \input{chapters/chapter-namea.tex}
+  \input{chapters/chapter-nameb.tex}
+  \input{chapters/chapter-namec.tex}
+  \input{chapters/chapter-named.tex}
+
+\appendix
+  \input{chapters/appendix-namea.tex}
+  \input{chapters/appendix-nameb.tex}
+
+\backmatter
+  \input{additional/acknowledgements}
+  \input{additional/aboutauthor}
+
+\clearpage
+\nocite{*}
+\printbibliography{references}
+
+\end{document}

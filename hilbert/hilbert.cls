@@ -1,15 +1,15 @@
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % GENERAL HANDY PACKAGES (MUST BE LOADED AFTER THE BASE CLASS)
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 \RequirePackage{etoolbox} % lots of powerful macros
 \RequirePackage{xparse} % lots of powerful macros
 \RequirePackage{calc} % for various calculations
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % INITIALIZING & HANDLING CLASS OPTIONS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hilbert}[2019/11/16 Inspired by the Two-Line style]
+\ProvidesClass{hilbert}[2021/07/02 Inspired by the Two-Line style]
 
 % Font options
 \def\@@ptsize{11pt}
@@ -23,9 +23,9 @@
 
 \LoadClass[\@@ptsize]{book} % to be built on top of the book class
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % DOCUMENT INFORMATION COMMANDS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 \DeclareDocumentCommand{\date}{m}{\newcommand{\udate}{#1}\renewcommand{\@date}{#1}}
 \DeclareDocumentCommand{\title}{m}{\newcommand{\utitle}{#1}\renewcommand{\@title}{#1}}
 \DeclareDocumentCommand{\author}{m}{\newcommand{\uauthor}{#1}\renewcommand{\@author}{#1}}
@@ -37,20 +37,9 @@
 \DeclareDocumentCommand{\revision}{m}{\newcommand{\urevision}{#1}}
 \DeclareDocumentCommand{\website}{m}{\newcommand{\uwebsite}{#1}}
 
-%----------------------------------------------------------------------------------------
-% GLOBAL TYPOGRAPHY
-%----------------------------------------------------------------------------------------
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
-\RequirePackage[osf]{libertine}
-\RequirePackage[libertine]{newtxmath}
-\RequirePackage{inconsolata}
-\RequirePackage{microtype}
-\RequirePackage{parskip}
-
-%----------------------------------------------------------------------------------------
-% COLOURS. A TRADITION
-%----------------------------------------------------------------------------------------
+%--------------------------------------------------------------
+% COLOURS
+%--------------------------------------------------------------
 \RequirePackage{xcolor}
 \definecolor{lightgray}{RGB}{211,211,211}
 \definecolor{darkgray}{RGB}{64,64,79}
@@ -63,9 +52,24 @@
 \definecolor{teal}{RGB}{0,128,128}
 \definecolor{truegreen}{RGB}{0,102,0}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
+% GLOBAL TYPOGRAPHY
+%-------------------------------------------------------------
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{fontenc}
+
+\RequirePackage{microtype}
+\RequirePackage{parskip}
+
+\usepackage[semibold,scale=.9]{sourcesanspro}
+\usepackage[osf]{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{inconsolata}
+\renewcommand{\sfdefault}{SourceSansPro-LF}
+
+%-------------------------------------------------------------
 % STANDARD PAGE LAYOUT
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 \RequirePackage{geometry}
   \geometry{papersize={129mm, 198mm}}
   \geometry{top=14mm, bottom=16mm, left=18mm, right=18mm}
@@ -82,9 +86,9 @@
   \fi
 }
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % HEADERS & FOOTERS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 \RequirePackage{fancyhdr}
   \pagestyle{fancy}
   \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
@@ -115,9 +119,9 @@
     \renewcommand{\headrulewidth}{0pt} 
   }
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % FRONT-, MAIN-, BACK- MATTERS BEHAVIOUR
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % Front matter
 \let\oldfrontmatter\frontmatter % Store the old command
 \renewcommand{\frontmatter}{
@@ -142,9 +146,9 @@
   \pagestyle{fancy-back}
 }
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % TABLE OF CONTENTS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 \RequirePackage{titletoc}
 
 \titlecontents{chapter}
@@ -154,9 +158,9 @@
   {}
   {\titlerule*[2mm]{.}\contentspage\hspace*{3mm}}
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % HEADINGS: CHAPTERS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 \RequirePackage{titlesec}
 
 \titleformat{\chapter}[display]
@@ -168,26 +172,25 @@
 
 % TODO: Add other styles here and enable easy switching.
 
-%----------------------------------------------------------------------------------------
-% PAGE: OPTIONAL HALF-TITLE PAGE
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
+% ENV: GENERAL PURPOSE; QUOTE
+%-------------------------------------------------------------
+\RequirePackage{changepage}
+\renewenvironment{quote}
+  {\begin{adjustwidth}{0.1\textwidth}{0.1\textwidth}}{\end{adjustwidth}}
+
+%-------------------------------------------------------------
+% PAGES: OPTIONAL HALF-TITLE PAGE, BLANK & ART PAGES
+%-------------------------------------------------------------
+% usage: \halftitlepage[custom-title]
 \NewDocumentCommand{\halftitlepage}{o}{%
   \IfValueTF{#1}{\def\@halftitletext{#1}}{\def\@halftitletext{\utitle}}%
-  \clearpage\null\vspace*{0.3\textheight}
+  \clearpage\thispagestyle{empty}\null\vspace{0.3\textheight}
   {\centering\scshape\Large\@halftitletext\par}
   \vfill\null\clearpage
 }
 
-%----------------------------------------------------------------------------------------
-% ENV: GENERAL PURPOSE; QUOTE
-%----------------------------------------------------------------------------------------
-\RequirePackage{changepage}
-\renewenvironment{quote}
-  {\begin{adjustwidth}{14mm}{14mm}\raggedright}{\end{adjustwidth}}
-
-%----------------------------------------------------------------------------------------
-% PAGE: BLANK & ART PAGES
-%----------------------------------------------------------------------------------------
+% usage: \blankpage[custom-text]
 \NewDocumentCommand{\blankpage}{o}{%
   \IfValueTF{#1}{\def\@blankpagetext{#1}}{\def\@blankpagetext{This page left blank intentionally}}%
   \clearpage\thispagestyle{empty}\null\vspace{0.3\textheight}
@@ -195,6 +198,7 @@
   \clearpage
 }
 
+% usage: \artpage[width]{image-file}[caption]
 \NewDocumentCommand{\artpage}{O{\linewidth}mo}{%
   \IfValueTF{#3}{\def\@artpagetext{\par#3}}{\let\@artpagetext\relax}
   \clearpage\thispagestyle{empty}\null\vfill
@@ -203,8 +207,42 @@
   \vfill\null\clearpage
 }
 
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 % VARIOUS RULERS, SEPARATORS & DIVIDERS
-%----------------------------------------------------------------------------------------
+%-------------------------------------------------------------
 \newcommand{\rulethick}[1][darkgray]{\par\textcolor{#1}{\rule{\linewidth}{5pt}}\par}
 \newcommand{\rulethin}[1][black]{\par\textcolor{#1}{\rule{\linewidth}{1pt}}\par}
+
+%--------------------------------------------------------------
+% EXTERNAL MODIFICATIONS
+%--------------------------------------------------------------
+% For highly customisable boxes
+\RequirePackage{mdframed}
+\newmdenv[hidealllines=true, backgroundcolor=lightgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
+
+%--------------------------------------------------------------
+% LISTS
+%--------------------------------------------------------------
+\RequirePackage{enumitem}
+\setlist[itemize,3]{label={$\circ$}}
+\setlist[itemize,4]{label={\textasteriskcentered}}
+
+%--------------------------------------------------------------
+% CAPTIONS
+%--------------------------------------------------------------
+\RequirePackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\DeclareCaptionStyle{marginfigure}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{widefigure}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{margintable}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{widetable}{font=small,labelfont=bf,labelsep=endash}
+
+%--------------------------------------------------------------
+% TABLES
+%--------------------------------------------------------------
+\usepackage{booktabs,tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+% \newcolumntype{D}{>{\centering\arraybackslash}p{4cm}}
+% \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}

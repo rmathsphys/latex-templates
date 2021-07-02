@@ -25,13 +25,18 @@
 %----------------------------------------------------------------------------------------
 % GLOBAL TYPOGRAPHY
 %----------------------------------------------------------------------------------------
+% \RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage{parskip}
+
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage{libertine} % nice main font
-\RequirePackage[libertine]{newtxmath} % complementary maths font
-\RequirePackage{inconsolata} % nice monospace font
-\RequirePackage{microtype} % typographical fine-tuning
-\RequirePackage{parskip} % more typographical fine-tuning
+
+\usepackage[semibold,scale=.9]{sourcesanspro}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{inconsolata}
+\renewcommand{\sfdefault}{SourceSansPro-LF}
 
 %----------------------------------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
@@ -70,6 +75,7 @@
 % ADDRESS SECTOR
 %----------------------------------------------------------------------------------------
 \let\ufromaddress\relax
+\let\utoaddress\relax
 \DeclareDocumentCommand{\fromaddress}{m}{\newcommand{\ufromaddress}{\begin{flushright}#1\end{flushright}}}
 \DeclareDocumentCommand{\toaddress}{m}{\newcommand{\utoaddress}{#1}}
 
