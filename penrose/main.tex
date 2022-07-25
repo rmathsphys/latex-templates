@@ -1,0 +1,117 @@
+\documentclass{penrose}
+
+\usepackage{lipsum}
+
+\title[Title for the Header]{A Very Long Title That Is Being Used for This Document on Purpose}
+\subtitle{This is an optional subtitle}
+\author{Author M. Person}
+\affiliation{Some Affiliation, City}
+\date{\today}
+\begin{document}
+
+\maketitle
+\begin{abstract}
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+\end{abstract}
+
+\section{Section Heading}
+\subsection{Subsection Heading}
+Lorem ipsum\footnote{This seems like a good place to add a \texttt{footnote}.} dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. There are two class options. The global font size can be selected using one of \texttt{10pt}, \texttt{11pt}, and \texttt{12pt}. The default value is \texttt{10pt}. Secondly, the titles and section headings can be typeset in sans-serif font family using the \texttt{sf} option. The default is \texttt{nosf}.
+
+The default font size is \texttt{10pt} currently. There are five class-specific commands for the preamble. Table~(\ref{tab:the-only-table}) describes them.
+\begin{table}[h]
+\centering
+\begin{tabularx}{\linewidth}{p{20mm}D{20mm}X}
+\toprule
+Command & Status & Description\\
+\midrule
+\texttt{title} & Required & Sets the title of the document. Also accepts an optional short-title for the header.\\
+\texttt{subtitle} & Optional & Sets the optional subtitle --- basically a `normally' typeset line immediately below the title.\\
+\texttt{author} & Required & Lists the author(s).\\
+\texttt{affiliation} & Optional & Sets a line for the affiliation. Very basic implementation currently.\\
+\texttt{date} & Optional & Prints the provided date.\\
+\bottomrule
+\end{tabularx}
+\caption{This is how the captions are set for tables.}
+\label{tab:the-only-table}
+\end{table}
+
+Some convenience macros such as \texttt{C}, \texttt{L}, \texttt{R}, \texttt{D\{<length>\}} are provided for table columns.
+
+Here is a simple citation~\cite{latexcompanion}. Here are two dummy lists: firstly using \texttt{itemize}:
+\begin{itemize}
+\item List item
+\item List item
+\begin{itemize}
+\item List item
+\item List item
+\item List item
+\begin{itemize}
+\item List item
+\item List item
+\end{itemize}
+\end{itemize}
+\item List item
+\end{itemize}
+Next, using \texttt{enumerate}:
+\begin{enumerate}
+\item List item
+\item List item
+\begin{enumerate}
+\item List item
+\item List item
+\item List item
+\begin{enumerate}
+\item List item
+\item List item
+\end{enumerate}
+\end{enumerate}
+\item List item
+\end{enumerate}
+
+\begin{colbox}
+  This is a \texttt{colbox} environment.
+
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+\end{colbox}
+
+\begin{quote}
+  This is a \texttt{quote} environment.
+  
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+\end{quote}
+
+Also a \texttt{widetext} environment, for the occasions where a wider figure, table or equation needs to be included. This sizing might change slightly in the future versions.
+\begin{widetext}
+  \lipsum[33]
+\end{widetext}
+
+\subsection{Subsection Heading}
+\lipsum[21]
+
+  \subsubsection{Subsubsection Heading}
+  \lipsum[22]
+
+\section{Section Heading}
+\lipsum[13]
+
+
+\appendix
+\section{Appendix Section Heading}
+\lipsum[11]
+
+\subsection{Appendix Subsection Heading}
+\lipsum[12]
+
+  \subsubsection{Appendix Subsubsection Heading}
+  \lipsum[13]
+
+\begin{center}
+  \vspace*{0.5em}
+  \rule{0.8\textwidth}{0.8pt}
+\end{center}
+
+\nocite{*}
+{\small \bibliography{references}}
+
+\end{document}
