@@ -46,6 +46,9 @@
 \RequirePackage{lmodern}
 \RequirePackage{microtype}
 \RequirePackage{parskip}
+\RequirePackage{changepage}
+
+\RequirePackage[defaultsans, scale=0.9]{lato}
 
 %------------------------------------------------------------
 % COLOURS
@@ -134,7 +137,7 @@
 \renewcommand{\mainmatter}{
   \oldmainmatter % Call the old command
   \pagestyle{fancy-chapter}
-  \def\@@chapterlable{Chapter}
+  \def\@@chapterlable{\uchapterlabel}
 }
 
 % Appendix
@@ -169,7 +172,8 @@
 \NewDocumentCommand{\maintoc}{}{{\let\onecolumn\relax \tableofcontents}}
 
 % Default style for chapters
-\def\@@chapterlable{Chapter}
+\newcommand{\uchapterlabel}{Chapter}
+\def\@@chapterlable{\uchapterlabel}
 \let\@@chapterclear\clearpage
 \let\oldchapter\chapter
 \RenewDocumentCommand{\chapter}{s m}{
