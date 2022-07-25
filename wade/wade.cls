@@ -32,10 +32,10 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 
-\usepackage[semibold,scale=.9]{sourcesanspro}
-\usepackage{libertine}
-\usepackage[libertine]{newtxmath}
-\usepackage{inconsolata}
+\RequirePackage[semibold,scale=.9]{sourcesanspro}
+\RequirePackage{libertine}
+\RequirePackage[libertine]{newtxmath}
+\RequirePackage{inconsolata}
 \renewcommand{\sfdefault}{SourceSansPro-LF}
 
 %----------------------------------------------------------------------------------------
