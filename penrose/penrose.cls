@@ -9,7 +9,7 @@
 % INITIALIZING & HANDLING CLASS OPTIONS
 %------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{penrose}[2022/03/13 A simple article class for maths and physics]
+\ProvidesClass{penrose}[2022/11/04 A simple article class for maths and physics]
 
 \def\@@ptsize{10pt}
 \DeclareOption{10pt}{\def\@@ptsize{10pt}} % the default option
@@ -20,6 +20,10 @@
 \let\@@sftag\relax
 \DeclareOption{sf}{\def\@@sftag{\sffamily}}
 \DeclareOption{nosf}{\let\@@sftag\relax} % the default option
+
+\def\@@sectag{arar}
+\DeclareOption{arar}{\def\@@sectag{arar}} % the default option
+\DeclareOption{rmal}{\def\@@sectag{rmal}}
 
 \DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
@@ -152,9 +156,15 @@
 %------------------------------------------------------------
 \RequirePackage{titlesec}
 
-\renewcommand{\thesection}{\Roman{section}}
-\renewcommand{\thesubsection}{\Alph{subsection}}
-\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\expandafter\ifstrequal\expandafter{\@@sectag}{rmal}{
+  \renewcommand{\thesection}{\Roman{section}}
+  \renewcommand{\thesubsection}{\Alph{subsection}}
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+}{
+  \renewcommand{\thesection}{\arabic{section}}
+  \renewcommand{\thesubsection}{\arabic{subsection}}
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+}
 
 \titleformat{\section}[hang]
   {\@@sftag\large\bfseries}{\thetitle.~}
@@ -165,7 +175,7 @@
   {2mm}{}
 
 \titleformat{\subsubsection}[hang]
-  {\@@sftag\itshape}{\thetitle.~}
+  {\@@sftag\itshape}{\thesection.\thesubsection.\thetitle.~}
   {2mm}{}
 
 \let\oldappendix\appendix
