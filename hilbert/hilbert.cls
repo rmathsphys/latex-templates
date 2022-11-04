@@ -17,6 +17,11 @@
 \DeclareOption{11pt}{\def\@@ptsize{11pt}} % this is the default option
 \DeclareOption{12pt}{\def\@@ptsize{12pt}}
 
+% Indentation options
+\def\@@docindent{}
+\DeclareOption{indent}{\def\@@docindent{indent}}
+\DeclareOption{noindent}{\def\@@docindent{}} % this is the default option
+
 % Ignore all other options
 \DeclareOption*{\PackageWarning{hilbert}{Unknown '\CurrentOption'}}
 \ProcessOptions\relax
@@ -40,6 +45,7 @@
 %--------------------------------------------------------------
 % COLOURS
 %--------------------------------------------------------------
+\RequirePackage{graphicx}
 \RequirePackage{xcolor}
 \definecolor{lightgray}{RGB}{211,211,211}
 \definecolor{darkgray}{RGB}{64,64,79}
@@ -59,7 +65,7 @@
 \RequirePackage{fontenc}
 
 \RequirePackage{microtype}
-\RequirePackage{parskip}
+\RequirePackage[\@@docindent]{parskip}
 
 \usepackage[semibold,scale=.9]{sourcesanspro}
 \usepackage[osf]{libertine}
@@ -244,5 +250,5 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
-% \newcolumntype{D}{>{\centering\arraybackslash}p{4cm}}
+\newcolumntype{D}[1]{>{\centering\arraybackslash}p{#1}}
 % \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
