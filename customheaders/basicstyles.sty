@@ -1,0 +1,93 @@
+\RequirePackage{microtype}
+\RequirePackage{parskip}
+
+%-------------------------------------------------------------
+% COLOURS
+%-------------------------------------------------------------
+\RequirePackage{xcolor}
+\definecolor{lightgray}{RGB}{211,211,211}
+\definecolor{darkgray}{RGB}{64,64,79}
+\definecolor{gold}{RGB}{255,204,0}
+\definecolor{orange}{RGB}{255,103,0}
+\definecolor{red}{RGB}{255,0,0}
+\definecolor{pink}{RGB}{255,182,193}
+\definecolor{crimson}{RGB}{211,0,63}
+\definecolor{trueblue}{RGB}{0,47,167}
+\definecolor{teal}{RGB}{0,128,128}
+\definecolor{truegreen}{RGB}{0,102,0}
+
+%-------------------------------------------------------------
+% EXTERNAL MODIFICATIONS
+%-------------------------------------------------------------
+% For highly customisable boxes
+\RequirePackage{mdframed}
+\newmdenv[hidealllines=true, backgroundcolor=lightgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
+
+%-------------------------------------------------------------
+% LISTS
+%-------------------------------------------------------------
+\RequirePackage{enumitem}
+\setlist[itemize,3]{label={$\circ$}}
+\setlist[itemize,4]{label={\textasteriskcentered}}
+
+%-------------------------------------------------------------
+% CAPTIONS
+%-------------------------------------------------------------
+\RequirePackage[font=small,labelfont=bf,labelsep=endash]{caption}
+\DeclareCaptionStyle{marginfigure}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{widefigure}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{margintable}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{widetable}{font=small,labelfont=bf,labelsep=endash}
+
+%-------------------------------------------------------------
+% TABLES
+%-------------------------------------------------------------
+\usepackage{booktabs,tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{D}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+%-------------------------------------------------------------
+% OTHER
+%-------------------------------------------------------------
+
+% \RequirePackage{hyperref}
+%   \hypersetup{
+%     colorlinks=true,
+%     linktoc=all,
+%     citecolor=crimson,
+%     linkcolor=crimson,
+%     filecolor=teal,
+%     urlcolor=teal
+% }
+
+% \newenvironment{own}{\color{gray!70!black}}{}
+% \newcommand\makecenter[1]{\raisebox{-0.5\height}{#1}}
+% \newcommand\separator{{\centering\rule{2cm}{0.2pt}\vspace{2pt}\par}}
+% \newenvironment{significant}{\begin{center}\begin{minipage}{0.9\textwidth}\centering\em}{\end{minipage}\end{center}}
+% \DeclareRobustCommand\tph[3]{{\texorpdfstring{#1}{#2}}}
+% \DeclareRobustCommand{\rvdots}{%
+%   \vbox{
+%     \baselineskip4\p@\lineskiplimit\z@
+%     \kern-\p@
+%     \hbox{.}\hbox{.}\hbox{.}
+%   }}
+
+% \let\stdsection\section
+% \renewcommand\section{\newpage\stdsection}
+
+%-------------------------------------------------------------
+% SHORT MACROS
+%-------------------------------------------------------------
+\def\st{\bgroup \ULdepth=-.55ex \ULset} % Strike through
+\newcommand{\cat}[1]{\mathsf{#1}}
+\newcommand{\ph}{\,\cdot\,}
+\newcommand{\term}[1]{\emph{#1}\index{#1}}
+
+\newcommand{\missing}[1]{{\color{red}#1}}
+
+% \newcommand{\keyword}[1]{\underline{#1}}
+\newcommand{\keyword}[1]{\textsf{#1}}

@@ -1,0 +1,184 @@
+\RequirePackage{xparse}
+\RequirePackage{mathtools}
+\RequirePackage{amssymb}
+\RequirePackage{siunitx}
+\RequirePackage{tensor}
+\RequirePackage{slashed}
+
+%------------------------------------------------------------
+% SIUNITX SETUP
+%------------------------------------------------------------
+\sisetup{separate-uncertainty = true}
+
+%------------------------------------------------------------
+% GROUPS, ALGEBRAS & SETS
+%------------------------------------------------------------
+% Number sets
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\A}{\mathbb{A}}
+
+% Special spaces and other sets
+\newcommand{\Ball}{\mathbb{B}} % Ball
+\newcommand{\Disc}{\mathbb{D}} % Disc
+\newcommand{\Hilbert}{\mathcal{H}} % Hilbert Space
+
+\newcommand{\CP}{\mathbb{C}\mathrm{P}} % Complex Projective
+\newcommand{\RP}{\mathbb{R}\mathrm{P}} % Real Projective
+
+\newcommand{\Sphere}[1]{S^{#1}} % Sphere
+\newcommand{\Torus}[1]{\mathbb{T}^{#1}} % Torus
+
+% Matrix groups
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\Orth}{\mathrm{O}}
+\newcommand{\PGL}{\mathrm{PGL}}
+\newcommand{\PSL}{\mathrm{PSL}}
+\newcommand{\PSO}{\mathrm{PSO}}
+\newcommand{\PSU}{\mathrm{PSU}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\Spin}{\mathrm{Spin}}
+\newcommand{\Sp}{\mathrm{Sp}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\U}{\mathrm{U}}
+
+% Other groups
+\newcommand{\Dih}[1]{\mathrm{D}_{#1}}
+\newcommand{\Sym}[1]{\mathrm{S}_{#1}}
+
+% Matrix algebras
+\newcommand{\Lie}[1]{\mathfrak{#1}}
+
+%------------------------------------------------------------
+% VARIOUS BRACKETS
+%------------------------------------------------------------
+% General
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\mean}{\langle}{\rangle}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\at}{}{\rvert}
+
+% Quantum Mechanics
+\DeclarePairedDelimiter{\comm}{[}{]}
+\DeclarePairedDelimiter{\acomm}{\lbrace}{\rbrace}
+
+\DeclarePairedDelimiter{\bra}{\langle}{\rvert}
+\DeclarePairedDelimiter{\ket}{\lvert}{\rangle}
+
+\DeclareDocumentCommand{\braket}{mom}{
+  \IfValueTF{#2}
+    {\left\langle#1\right\rvert#2\left\lvert#3\right\rangle}
+    {\left\langle#1\middle\rvert#3\right\rangle}
+}
+
+\DeclarePairedDelimiterXPP{\nord}[1]{N}{\lbrace}{\rbrace}{}{#1}
+\DeclarePairedDelimiterXPP{\tord}[1]{T}{\lbrace}{\rbrace}{}{#1}
+
+\newcommand{\qop}[1]{\hat{#1}}
+\newcommand{\qadj}[1]{\hat{#1}^{\dagger}}
+\newcommand{\anti}[1]{\overline{#1}} % antiparticle
+
+%------------------------------------------------------------
+% VARIOUS OPERATORS
+%------------------------------------------------------------
+\renewcommand{\d}{\operatorname{d}\!} % upright dx
+\newcommand{\pd}{\partial} % shortcut for the \partial
+\newcommand{\Int}{\int\limits} % integral with display limits
+
+\newcommand{\Tr}{\operatorname{Tr}} % Trace
+\newcommand{\img}{\operatorname{im}} % Image
+\newcommand{\rank}{\operatorname{rank}} % Rank
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\ad}{\operatorname{ad}}
+
+\newcommand{\Arg}{\operatorname{Arg}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\res}{\operatorname{res}} % Residue
+
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\End}{\operatorname{End}}
+
+% \det is determinant (already defined)
+% \ker is kernal (already defined)
+% \arg (already defined)
+
+\newcommand{\cosec}{\operatorname{cosec}}
+\newcommand{\cosech}{\operatorname{cosech}}
+\newcommand{\sech}{\operatorname{sech}}
+
+% Alternative inverse trigonometric functions
+\newcommand{\asin}{\operatorname{sin}^{-1}}
+\newcommand{\acos}{\operatorname{cos}^{-1}}
+\newcommand{\atan}{\operatorname{tan}^{-1}}
+\newcommand{\acot}{\operatorname{cot}^{-1}}
+\newcommand{\acsc}{\operatorname{csc}^{-1}}
+\newcommand{\asec}{\operatorname{sec}^{-1}}
+
+% Alternative inverse hyperbolic functions
+\newcommand{\asinh}{\operatorname{sinh}^{-1}}
+\newcommand{\acosh}{\operatorname{cosh}^{-1}}
+\newcommand{\atanh}{\operatorname{tanh}^{-1}}
+\newcommand{\acoth}{\operatorname{coth}^{-1}}
+\newcommand{\acsch}{\operatorname{csch}^{-1}}
+\newcommand{\asech}{\operatorname{sech}^{-1}}
+
+% Logrithm
+\renewcommand{\log}{\operatorname{log}}
+\renewcommand{\ln}{\operatorname{ln}}
+\newcommand{\Log}{\operatorname{Log}}
+\newcommand{\Ln}{\operatorname{Ln}}
+
+
+% Complex Components
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\sign}{\mathrm{sgn}}
+
+%------------------------------------------------------------
+% ABBREVIATIONS AND SUCH
+%------------------------------------------------------------
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\BigO}{\mathcal{O}} % Big-O notation
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Der}{\mathcal{D}} % Derivation
+\newcommand{\F}{\mathbb{F}} % Finite field
+\newcommand{\id}{\mathrm{id}} % Identity element
+\newcommand{\Id}{\mathrm{Id}} % Identity element (another one)
+\newcommand{\Lag}{\mathcal{L}}
+\newcommand{\Ham}{\mathcal{H}}
+\renewcommand{\P}{\mathbb{P}} % Probability
+\newcommand{\pt}{\{\mathrm{pt}\}} % Point
+\newcommand{\vol}{\mathrm{vol}} % Volume
+
+\newcommand{\param}{parametrisation} % Short: Parametrisation
+\newcommand{\wts}{want to show} % Short: Want to show
+\newcommand{\wrt}{w.r.t.} % Short: With respect to
+% \newcommand{\st}{s.t.} % Short: such that
+
+\newcommand{\qeq}{\mathrel{``{=}"}} 
+
+%------------------------------------------------------------
+% VECTORS, DERIVATIVES AND SUCH
+%------------------------------------------------------------
+
+% Vectors
+\let\oldvec\vec
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\uvec}[1]{\boldsymbol{\mathbf{\hat{#1}}}}
+
+% Derivatives
+\let\divsymb\div
+\renewcommand{\div}[1]{\nabla\cdot\vec{#1}}
+\newcommand{\curl}[1]{\nabla\times\vec{#1}}
+\newcommand{\lap}{\nabla^2}
