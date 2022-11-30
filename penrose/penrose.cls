@@ -243,3 +243,15 @@
 \DeclareCaptionStyle{widefigure}{font=small,labelfont=bf,labelsep=endash}
 \DeclareCaptionStyle{margintable}{font=small,labelfont=bf,labelsep=endash}
 \DeclareCaptionStyle{widetable}{font=small,labelfont=bf,labelsep=endash}
+
+\DeclareCaptionStyle{marginfigure}{font=small,labelfont=bf,labelsep=endash}
+\DeclareCaptionStyle{sidecaption}{font=small,labelfont=bf,labelsep=endash}
+
+%------------------------------------------------------------
+% FOR MORE COMPATABILITY WITH SALAM.CLS
+%------------------------------------------------------------
+\RequirePackage{sidenotes}
+\let\sidenote\footnote
+\let\margintoc\relax
+\DeclareDocumentCommand{\marginbox}{oom}{}
+\DeclareDocumentCommand{\marginnote}{omo}{}
