@@ -91,7 +91,7 @@
 %------------------------------------------------------------
 % VARIOUS OPERATORS
 %------------------------------------------------------------
-\renewcommand{\d}{\operatorname{d}\!} % upright dx
+\renewcommand{\d}{\mathop{}\!\mathrm{d}} % upright dx
 \newcommand{\pd}{\partial} % shortcut for the \partial
 \newcommand{\Int}{\int\limits} % integral with display limits
 
@@ -108,6 +108,9 @@
 
 \newcommand{\Aut}{\operatorname{Aut}}
 \newcommand{\End}{\operatorname{End}}
+
+\DeclareMathOperator{\expected}{\mathbf{E}}
+\DeclareMathOperator{\variance}{\mathbf{Var}}
 
 % \det is determinant (already defined)
 % \ker is kernal (already defined)
@@ -183,3 +186,8 @@
 \renewcommand{\div}[1]{\nabla\cdot\vec{#1}}
 \newcommand{\curl}[1]{\nabla\times\vec{#1}}
 \newcommand{\lap}{\nabla^2}
+
+% Such that (to be used in set builder notation)
+\newcommand{\st}[1][|]{\,#1\,}
+\newcommand{\closure}[1]{\overline{#1}}
+\newcommand{\interior}[1]{{#1}^{\circ}}
