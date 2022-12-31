@@ -180,6 +180,7 @@
 % MISC USEFUL BITS
 %------------------------------------------------------------
 \bibliographystyle{elsarticle-num}
+\renewcommand{\refname}{Bibliography}
 \let\openbox\relax
 
 \newcommand{\frontmatter}{
@@ -251,20 +252,20 @@
 \etocsettocdepth{subsection}
 \etocsettocstyle{\section*{\contentsname}\par\nobreak}{}
 
-\newcommand \Dotfill {\leavevmode \cleaders \hb@xt@ .44em{\hss .\hss }\hfill \kern \z@}
+% \newcommand \Dotfill {\leavevmode \cleaders \hb@xt@ .44em{\hss .\hss }\hfill \kern \z@}
 
-\etocsetstyle{section}
-{}
-{\vspace*{0.8em}\leavevmode\leftskip 0cm\relax}
-{\bfseries\normalsize\etocifnumbered{\makebox[7mm][l]{\etoclink{\etocthenumber.}}}{}%
-\etocname\nobreak\hfill\nobreak%
-\makebox[8mm][r]{\mdseries\etocpage}\par\vspace*{0.4em}}
-{}
+% \etocsetstyle{section}
+% {}
+% {\vspace*{0.8em}\leavevmode\leftskip 0cm\relax}
+% {\bfseries\normalsize\etocifnumbered{\makebox[7mm][l]{\etoclink{\etocthenumber.}}}{}%
+% \etocname\nobreak\hfill\nobreak%
+% \makebox[8mm][r]{\mdseries\etocpage}\par\vspace*{0.4em}}
+% {}
 
-\etocsetstyle {subsection}
-{}
-{\leavevmode\leftskip 7mm\relax}
-{\mdseries\normalsize\makebox[12mm][l]{\etoclink{\etocthenumber.}}%
-\etocname\nobreak\hspace*{2mm}\nobreak\Dotfill\nobreak%
-\makebox[8mm][r]{\etocpage}\par\vspace*{0.4em}}
-{}
+% \etocsetstyle{subsection}
+% {}
+% {\leavevmode\leftskip 7mm\relax}
+% {\mdseries\normalsize\makebox[12mm][l]{\etoclink{\etocthenumber.}}%
+% \etocname\nobreak\hspace*{2mm}\nobreak\Dotfill\nobreak%
+% \makebox[8mm][r]{\etocpage}\par\vspace*{0.4em}}
+% {}
