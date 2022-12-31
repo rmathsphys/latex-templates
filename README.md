@@ -16,7 +16,8 @@ A (growing) handmade collection of latex templates, classes and style files.
 ### Custom Header Files:
 Based on how the author structures their documents.
 + `mathsphystools:` A collection of macros and redefinitions to be used for all things maths and physics.
-+ `thmtools:` Predefined theorem, definition and remark-like environments. For coherent styles and consistent naming.
++ `thmstyles:` Predefined theorem, definition and remark-like environments. For coherent styles and consistent naming.
++ `basicstyles:` What does this do?
 
 ### Outdated/Broken Projects:
 The following are broken or outdated for various reasons. Either I have simply not updated them in a while, or their dependencies have been updated and no longer backwards compatible, or there are major unchecked bugs, or they are simply incomplete, etc.
