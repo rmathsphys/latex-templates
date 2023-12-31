@@ -9,26 +9,21 @@
 % INITIALIZING & HANDLING CLASS OPTIONS
 %------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{penrose}[2022/11/04 A simple article class for maths and physics]
+\ProvidesClass{penrose}[2023/12/29 A simple article class for maths and physics]
 
 \def\@@ptsize{10pt}
-\DeclareOption{10pt}{\def\@@ptsize{10pt}} % the default option
+\DeclareOption{10pt}{\def\@@ptsize{10pt}} % default option
 \DeclareOption{11pt}{\def\@@ptsize{11pt}}
 \DeclareOption{12pt}{\def\@@ptsize{12pt}}
 
-
 \let\@@sftag\relax
 \DeclareOption{sf}{\def\@@sftag{\sffamily}}
-\DeclareOption{nosf}{\let\@@sftag\relax} % the default option
-
-\def\@@sectag{arar}
-\DeclareOption{arar}{\def\@@sectag{arar}} % the default option
-\DeclareOption{rmal}{\def\@@sectag{rmal}}
+\DeclareOption{nosf}{\let\@@sftag\relax} % default option
 
 \DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
 
-\LoadClass[\@@ptsize]{article} % to be built on top of the article class
+\LoadClass[\@@ptsize]{article} % built on top of the article class
 
 %------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
@@ -36,8 +31,8 @@
 \RequirePackage[a4paper]{geometry}
   \geometry{nomarginpar}
   \geometry{includeall}
-  \geometry{top=14mm, bottom=22mm, left=39mm, right=39mm}
-  \geometry{headheight=7mm, headsep=6mm, footskip=7mm}
+  \geometry{top=16mm, bottom=22mm, left=34mm, right=34mm}
+  \geometry{headheight=7mm, headsep=6mm, footskip=8mm}
 
 %------------------------------------------------------------
 % GLOBAL TYPOGRAPHY
@@ -45,7 +40,6 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
-\RequirePackage{inconsolata}
 \RequirePackage{setspace}
 \RequirePackage{parskip}
 \RequirePackage{microtype}
@@ -103,7 +97,7 @@
   % Header-Footer style for the first page
   \fancypagestyle{fancy-first}{
     \fancyhf{}
-    \fancyfoot[C]{\thepage}
+    \fancyfoot[C]{-- \thepage\ --}
     \renewcommand{\headrulewidth}{0pt}
   }
 
@@ -111,7 +105,7 @@
   \fancypagestyle{fancy-general}{
     \fancyhf{}
     \fancyhead[C]{{\slshape\ushorttitle}}
-    \fancyfoot[C]{\thepage}
+    \fancyfoot[C]{-- \thepage\ --}
     \renewcommand{\headrulewidth}{0pt}
   }
 
@@ -155,42 +149,6 @@
 % HEADINGS: SECTIONS & SUBSECTIONS
 %------------------------------------------------------------
 \RequirePackage{titlesec}
-
-\expandafter\ifstrequal\expandafter{\@@sectag}{rmal}{
-  \renewcommand{\thesection}{\Roman{section}}
-  \renewcommand{\thesubsection}{\Alph{subsection}}
-  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-}{
-  \renewcommand{\thesection}{\arabic{section}}
-  \renewcommand{\thesubsection}{\arabic{subsection}}
-  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-}
-
-\titleformat{\section}[hang]
-  {\@@sftag\large\bfseries}{\thetitle.~}
-  {2mm}{}
-
-\titleformat{\subsection}[hang]
-  {\@@sftag\bfseries}{\thesection.\thetitle.~}
-  {2mm}{}
-
-\titleformat{\subsubsection}[hang]
-  {\@@sftag\itshape}{\thesection.\thesubsection.\thetitle.~}
-  {2mm}{}
-
-\let\oldappendix\appendix
-\renewcommand{\appendix}{
-  \oldappendix
-  \renewcommand{\thesection}{\Alph{section}}
-  \renewcommand{\thesubsection}{\arabic{subsection}}
-  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-  \titleformat{\section}[hang]
-  {\@@sftag\large\bfseries}{\appendixname~\thesection .}
-  {2mm}{}
-  \titleformat{\subsubsection}[hang]
-  {\@@sftag\itshape}{\thesection.\thesubsection.\thetitle.~}
-  {2mm}{}
-}
 
 %------------------------------------------------------------
 % HYPERLINKS
