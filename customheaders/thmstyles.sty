@@ -132,4 +132,5 @@
 % Use this to redefine the qed symbol
 % \renewcommand\qedsymbol{Bob's Your Uncle.}
 \newcommand{\fakeqed}{\pushQED{\qed}\qedhere}
-\newcommand{\eggqed}{\null\hfill$\blacksquare$\newline} % an alternate qed, for end of examples.
+\newcommand{\eggqed}{\pushQED{\qed}\qedhere} % an alternate qed, for the end of examples.
+\newcommand{\eggqedb}{\null\hfill$\blacksquare$\newline} % an alternate qed, for end of examples.
