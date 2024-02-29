@@ -63,6 +63,7 @@
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\mean}{\langle}{\rangle}
+\let\inner\mean
 \DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
@@ -95,19 +96,19 @@
 \newcommand{\pd}{\partial} % shortcut for the \partial
 \newcommand{\Int}{\int\limits} % integral with display limits
 
-\newcommand{\Tr}{\operatorname{Tr}} % Trace
-\newcommand{\img}{\operatorname{im}} % Image
-\newcommand{\rank}{\operatorname{rank}} % Rank
-\newcommand{\adj}{\operatorname{adj}}
-\newcommand{\ad}{\operatorname{ad}}
+\DeclareMathOperator{\Tr}{Tr} % Trace
+\DeclareMathOperator{\img}{im} % Image
+\DeclareMathOperator{\rank}{rank} % Rank
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\ad}{ad}
 
-\newcommand{\Arg}{\operatorname{Arg}}
-\newcommand{\diag}{\operatorname{diag}}
-\newcommand{\supp}{\operatorname{supp}}
-\newcommand{\res}{\operatorname{res}} % Residue
+\DeclareMathOperator{\Arg}{Arg}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\res}{res} % Residue
 
-\newcommand{\Aut}{\operatorname{Aut}}
-\newcommand{\End}{\operatorname{End}}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
 
 \DeclareMathOperator{\expected}{\mathbf{E}}
 \DeclareMathOperator{\variance}{\mathbf{Var}}
@@ -116,31 +117,31 @@
 % \ker is kernal (already defined)
 % \arg (already defined)
 
-\newcommand{\cosec}{\operatorname{cosec}}
-\newcommand{\cosech}{\operatorname{cosech}}
-\newcommand{\sech}{\operatorname{sech}}
+\DeclareMathOperator{\cosec}{cosec}
+\DeclareMathOperator{\cosech}{cosech}
+\DeclareMathOperator{\sech}{sech}
 
 % Alternative inverse trigonometric functions
-\newcommand{\asin}{\operatorname{sin}^{-1}}
-\newcommand{\acos}{\operatorname{cos}^{-1}}
-\newcommand{\atan}{\operatorname{tan}^{-1}}
-\newcommand{\acot}{\operatorname{cot}^{-1}}
-\newcommand{\acsc}{\operatorname{csc}^{-1}}
-\newcommand{\asec}{\operatorname{sec}^{-1}}
+\DeclareMathOperator{\asin}{{sin}^{-1}}
+\DeclareMathOperator{\acos}{{cos}^{-1}}
+\DeclareMathOperator{\atan}{{tan}^{-1}}
+\DeclareMathOperator{\acot}{{cot}^{-1}}
+\DeclareMathOperator{\acsc}{{csc}^{-1}}
+\DeclareMathOperator{\asec}{{sec}^{-1}}
 
 % Alternative inverse hyperbolic functions
-\newcommand{\asinh}{\operatorname{sinh}^{-1}}
-\newcommand{\acosh}{\operatorname{cosh}^{-1}}
-\newcommand{\atanh}{\operatorname{tanh}^{-1}}
-\newcommand{\acoth}{\operatorname{coth}^{-1}}
-\newcommand{\acsch}{\operatorname{csch}^{-1}}
-\newcommand{\asech}{\operatorname{sech}^{-1}}
+\DeclareMathOperator{\asinh}{{sinh}^{-1}}
+\DeclareMathOperator{\acosh}{{cosh}^{-1}}
+\DeclareMathOperator{\atanh}{{tanh}^{-1}}
+\DeclareMathOperator{\acoth}{{coth}^{-1}}
+\DeclareMathOperator{\acsch}{{csch}^{-1}}
+\DeclareMathOperator{\asech}{{sech}^{-1}}
 
 % Logrithm
-\renewcommand{\log}{\operatorname{log}}
-\renewcommand{\ln}{\operatorname{ln}}
-\newcommand{\Log}{\operatorname{Log}}
-\newcommand{\Ln}{\operatorname{Ln}}
+\DeclareMathOperator{\log}{log}
+\DeclareMathOperator{\ln}{ln}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\Ln}{Ln}
 
 
 % Complex Components
@@ -155,7 +156,7 @@
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\BigO}{\mathcal{O}} % Big-O notation
 \newcommand{\D}{\mathcal{D}}
-\newcommand{\Der}{\mathcal{D}} % Derivation
+\newcommand{\Der}{\mathrm{Der}} % Derivation
 \newcommand{\F}{\mathbb{F}} % Finite field
 \newcommand{\id}{\mathrm{id}} % Identity element
 \newcommand{\Id}{\mathrm{Id}} % Identity element (another one)
