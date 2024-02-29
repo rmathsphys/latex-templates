@@ -32,7 +32,7 @@
 \newcommand{\RP}{\mathbb{R}\mathrm{P}} % Real Projective
 
 \newcommand{\Sphere}[1]{S^{#1}} % Sphere
-\newcommand{\Torus}[1]{\mathbb{T}^{#1}} % Torus
+\newcommand{\Torus}[1]{T^{#1}} % Torus
 
 % Matrix groups
 \newcommand{\GL}{\mathrm{GL}}
@@ -56,21 +56,33 @@
 % Matrix algebras
 \newcommand{\Lie}[1]{\mathfrak{#1}}
 
+% Group theory symbols
+
+\newcommand{\subgroup}{\mathrel{\leq}}
+\newcommand{\nsubgroup}{\mathrel{\trianglelefteq}}
+\DeclareDocumentCommand{\inv}{sm}{
+  \IfBooleanTF{#1} {\paren*{#2}^{-1}} {#2^{-1}}
+}
+
 %------------------------------------------------------------
 % VARIOUS BRACKETS
 %------------------------------------------------------------
 % General
+\DeclarePairedDelimiter{\paren}{\lparen}{\rparen}
+\DeclarePairedDelimiter{\cparen}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\bparen}{\lbrack}{\rbrack}
+
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\inner}{\langle}{\rangle}
 \DeclarePairedDelimiter{\mean}{\langle}{\rangle}
-\let\inner\mean
 \DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
-\DeclarePairedDelimiter{\at}{}{\rvert}
+\DeclarePairedDelimiter{\at}{.}{\rvert}
 
 % Quantum Mechanics
-\DeclarePairedDelimiter{\comm}{[}{]}
+\DeclarePairedDelimiter{\comm}{\lbrack}{\rbrack}
 \DeclarePairedDelimiter{\acomm}{\lbrace}{\rbrace}
 
 \DeclarePairedDelimiter{\bra}{\langle}{\rvert}
@@ -86,7 +98,9 @@
 \DeclarePairedDelimiterXPP{\tord}[1]{T}{\lbrace}{\rbrace}{}{#1}
 
 \newcommand{\qop}[1]{\hat{#1}}
-\newcommand{\qadj}[1]{\hat{#1}^{\dagger}}
+\newcommand{\qdagger}[1]{\hat{#1}^{\dagger}}
+
+\newcommand{\qbar}[1]{\overline{#1}} % adjoint such as \psi-bar
 \newcommand{\anti}[1]{\overline{#1}} % antiparticle
 
 %------------------------------------------------------------
@@ -94,7 +108,12 @@
 %------------------------------------------------------------
 \renewcommand{\d}{\mathop{}\!\mathrm{d}} % upright dx
 \newcommand{\pd}{\partial} % shortcut for the \partial
+\DeclareMathOperator{\alemb}{\square} % shortcut for the \square
 \newcommand{\Int}{\int\limits} % integral with display limits
+\newcommand{\compose}{\mathbin{\circ}} % composition of functions
+
+\newcommand{\isom}{\mathrel{\cong}} % isomorphism
+\newcommand{\homeo}{\mathrel{\cong}} % homeomorphism
 
 \DeclareMathOperator{\Tr}{Tr} % Trace
 \DeclareMathOperator{\img}{im} % Image
@@ -105,11 +124,17 @@
 \DeclareMathOperator{\Arg}{Arg}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\res}{res} % Residue
+\DeclareMathOperator*{\res}{res} % Residue
 
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\sign}{sgn}
 
+% Probability and statistics
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
 \DeclareMathOperator{\expected}{\mathbf{E}}
 \DeclareMathOperator{\variance}{\mathbf{Var}}
 
@@ -138,17 +163,21 @@
 \DeclareMathOperator{\asech}{{sech}^{-1}}
 
 % Logrithm
-\DeclareMathOperator{\log}{log}
-\DeclareMathOperator{\ln}{ln}
+% \log -> log (already defined)
+% \ln -> ln (already defined)
 \DeclareMathOperator{\Log}{Log}
-\DeclareMathOperator{\Ln}{Ln}
+
+% Some other functions
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\erfc}{erfc}
 
 
 % Complex Components
-\renewcommand{\Re}{\mathrm{Re}}
-\renewcommand{\Im}{\mathrm{Im}}
+\let\Re\relax
+\let\Im\relax
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
 \newcommand{\conj}[1]{\overline{#1}}
-\newcommand{\sign}{\mathrm{sgn}}
 
 %------------------------------------------------------------
 % ABBREVIATIONS AND SUCH
@@ -162,16 +191,11 @@
 \newcommand{\Id}{\mathrm{Id}} % Identity element (another one)
 \newcommand{\Lag}{\mathcal{L}}
 \newcommand{\Ham}{\mathcal{H}}
-\renewcommand{\P}{\mathbb{P}} % Probability
 \newcommand{\pt}{\{\mathrm{pt}\}} % Point
 \newcommand{\vol}{\mathrm{vol}} % Volume
 
-\newcommand{\param}{parametrisation} % Short: Parametrisation
-\newcommand{\wts}{want to show} % Short: Want to show
-\newcommand{\wrt}{w.r.t.} % Short: With respect to
-% \newcommand{\st}{s.t.} % Short: such that
-
-\newcommand{\qeq}{\mathrel{``{=}"}} 
+\newcommand{\qeq}{\stackrel{?}{=}} 
+\newcommand{\ifeq}{\mathrel{``{=}"}} 
 
 %------------------------------------------------------------
 % VECTORS, DERIVATIVES AND SUCH
@@ -184,9 +208,10 @@
 
 % Derivatives
 \let\divsymb\div
-\renewcommand{\div}[1]{\nabla\cdot\vec{#1}}
-\newcommand{\curl}[1]{\nabla\times\vec{#1}}
+\renewcommand{\div}{\nabla\cdot}
+\newcommand{\curl}{\nabla\times}
 \newcommand{\lap}{\nabla^2}
+\newcommand{\grad}{\nabla}
 
 % Such that (to be used in set builder notation)
 \newcommand{\st}[1][|]{\,#1\,}
