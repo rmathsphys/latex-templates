@@ -12,10 +12,13 @@
 \ProvidesClass{wade}[2024/03/29 A simple, personalised letter class]
 
 % Font options
-\def\@@ptsize{12pt}
+\def\@@ptsize{11pt}
+\newtoggle{@@uselibertine}
+
 \DeclareOption{10pt}{\def\@@ptsize{10pt}}
 \DeclareOption{11pt}{\def\@@ptsize{11pt}}
 \DeclareOption{12pt}{\def\@@ptsize{12pt}} % this is the default option
+\DeclareOption{uselibertine}{\toggletrue{@@uselibertine}}
 
 % Ignore all other options
 \DeclareOption*{\PackageWarning{wade}{Unknown '\CurrentOption'}}
@@ -33,11 +36,10 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 
-\RequirePackage[semibold,scale=.9]{sourcesanspro}
-\RequirePackage{libertine}
-\RequirePackage[libertine]{newtxmath}
-\RequirePackage{inconsolata}
-\renewcommand{\sfdefault}{SourceSansPro-LF}
+\RequirePackage{lmodern}
+\iftoggle{@@uselibertine}{\RequirePackage{libertine}\RequirePackage{inconsolata}}{}
+
+% \renewcommand{\sfdefault}{SourceSansPro-LF}
 
 %----------------------------------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
