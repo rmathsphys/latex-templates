@@ -1,0 +1,136 @@
+\documentclass[11pt,many]{noether}
+
+  \usepackage{mathy}
+
+  \author{Author M. Name}
+  \institute{University of Awesome}
+  \coursetitle{Maths \& Physics}
+  \documenttitle{Example Sheet 3}
+  \moduletitle{Quantum Gravity}
+  \deadline{4am on Sunday, 30 February 2020}
+
+  % \selecttitlea %(default)
+  % \selecttitleb
+  % \selecttitlec
+  % \selecttitled
+
+  % \selectrubricdefault %(default)
+  % \selectrubricboxed
+
+  % \selectsignaturedefault %(default)
+  % \selectsignaturecentered
+
+\begin{document}
+
+% Start by typsetting the title & other key information
+% This comes in multiple styles. Activate them in the preamble.
+% Or skip this and write your own (mini) style here.
+\maketitle
+
+% The rubric is optional; but it is rarely a good idea to leave it out.
+\begin{rubric}
+  This is the rubric of the document.\\
+  This should be used to add some context, introductory comments and important instructions. For example: which questions are mandatory and which ones are optional; where should the answers be submitted to; who can provide more help if needed, etc.\\
+  The rubric comes in two styles: \small{\verb+\selectrubricdefault+} (active by default) and \small{\verb+\selectrubricboxed+}.
+\end{rubric}
+
+% Add section headings (if you must!)
+\section{Section Heading}
+If the assignment is going to be lengthy or is naturally divided into different parts then use the section headings to separate these parts. For example, you might want to split the assignment into three sections: Warm-up questions, Required questions \& Extension questions. The sections are not numbered by default because assignments shouldn't have many section headings in the first place -- in fact none are really needed!
+
+% I only know of one professor who uses this sectioned layout.
+% Although she is a pro at it ... I wouldn't recommend it!
+\subsection{Subsection Heading}
+
+There are 5 different types of question styles -- in terms of how they are numbered etc. Also, you can add (non-question-y) text like this wherever needed.
+
+% Question type: Numbered. Subject-line: Not provided.
+\begin{nquest}
+  This is the simplest \& probably the best format to use. If there are both optional \& required questions in this sheet then use this style for optional questions. \totalmarks{3}
+\end{nquest}
+
+% Question type: Numbered. Subject-line: Provided.
+\begin{nquest}[Subject. E.g: Fermat's Last Theorem]
+  Same as the last question but this time with a subject line.
+  \begin{enumerate}
+    \item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    \item Laboris nisi ut aliquip ex ea commodo consequat laboris nisi ut aliquip ex ea commodo consequat laboris nisi ut aliquip ex ea commodo laboris nisi ut aliquip ex ea commodo consequat.
+    \begin{enumerate}
+      \item Somthing here.
+      \item somthing else here!
+    \end{enumerate}
+    \item Laboris nisi ut aliquip ex ea commodo consequat.
+  \end{enumerate}
+  \hint{Google it.}
+\end{nquest}
+
+% Question type: Numbered & framed. Subject-line: Not provided.
+\begin{nfquest}
+  This is the second simplest format of questions. It can be used to indicate a `required' question.
+\end{nfquest}
+
+% Question type: Numbered & framed. Subject-line: Provided.
+\begin{nfquest}[Subject. E.g: Angular Momentum Algebra]
+  Same as the last question but this time with a subject line.
+  \begin{enumerate}
+    \item Aliquip ex ea commodo consequat laboris nisi ut aliquip ex ea commodo consequat.
+    \item Laboris nisi ut aliquip ex ea commodo consequat.
+    \item Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  \end{enumerate}
+\end{nfquest}
+
+% Question type: Not numbered. Subject-line: Mandatory.
+\begin{quest}{Subject. E.g: Geodesics on a Torus}
+  This is an unnumbered question. It isn't suitable for a standard assignment sheet (as it is difficult to refer to) but can be very helpful in support classes or when listing a long question on a specific topic. It can also be used to give examples.
+\end{quest}
+
+\subsection{Another Subsection Heading}
+
+A few more questions to fill up some space.
+
+\begin{nfquest}
+  Do what Heisenberg did but quicker and better. Also, derive and completely solve Dirac equation, assuming only basic set theory. \totalmarks{5}
+\end{nfquest}
+
+This is just an example of some text that has been inserted between two questions. It is not a part of either of these two questions, so, it doesn't affect their formatting. Now, clearly, there is no reason to be limited to text: you can also add graphics, links, etc. Or add nothing at all and keep things simple and clear.
+
+\begin{nfquest}
+  Compute all non-trivial zeros of the following function:
+  \begin{equation*}
+    \zeta(s) = \sum_{n=0}^{\infty} \frac{1}{n^s}
+  \end{equation*} \totalmarks{2}
+\end{nfquest}
+
+\begin{nfquest}
+  State the Maxwell's equations of electromagnetic radiation.
+\end{nfquest}
+
+\begin{nquest}
+  \begin{enumerate}
+    \item $2 + 5 =$
+    \item $2 \times 5 =$
+    \item $\sqrt{9} =$
+    \item $44 - 43 = $
+  \end{enumerate}
+\end{nquest}
+
+\begin{nfquest}
+  Which of the following correctly describes electrons?
+  \begin{enumerate}
+    \item Leptons with charge $-1$.
+    \item Quarks with charge $1/3$.
+    \item Bosons \dots hahaha this one is so wrong!
+    \item Leptons with charge $0$.
+  \end{enumerate}
+\end{nfquest}
+
+% Finally some more text. Maybe add some links to learning resources?
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+% End with a signature line & provide contact details for queries and feedback.
+% Again, completely optional.
+\begin{signature}
+Suggestions and comments to \texttt{email@website.edu}.
+\end{signature}
+
+\end{document}

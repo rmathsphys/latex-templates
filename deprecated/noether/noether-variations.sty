@@ -1,0 +1,85 @@
+%----------------------------------------------------------------------------------------
+% TITLE: DEFAULT AND VARIATIONS
+%----------------------------------------------------------------------------------------
+
+% Default one:
+\newcommand{\@@titlecodea}{
+  {\itshape\uauthor\hfill\uinstitute\par\vspace{1mm}}
+  {\centering{\sffamily\Large\bfseries\umoduletitle\ // \udocumenttitle}\par(\textit{Deadline: \udeadline})\par}
+}
+
+% Other variations:
+\newcommand{\@@titlecodeb}{
+  {\itshape\uauthor\hfill\uinstitute\par\vspace{1mm}}
+  {\centering{\sffamily\Large\bfseries\umoduletitle\ // \udocumenttitle}\par}
+}
+\newcommand{\@@titlecodec}{
+  {\sffamily\scshape\large\umoduletitle\hfill\uauthor\par\vspace{1mm}}
+  {\centering\Large\textbf{\udocumenttitle}\\{\small(\textit{Deadline: \udeadline})}\par}
+}
+\newcommand{\@@titlecoded}{
+  {\bfseries\Large\umoduletitle\hfill\udocumenttitle\\}
+  {\itshape\uauthor\hfill(Deadline: \udeadline)\par}
+}
+
+% Currently selected:
+\newcommand{\@@selectedtitle}{\@@titlecodea}
+
+%----------------------------------------------------------------------------------------
+% RUBRIC: DEFAULT AND VARIATIONS
+%----------------------------------------------------------------------------------------
+% Default one:
+\newcommand{\@@rubricdefaultstart}{\medskip\rule{\textwidth}{0.2mm}\medskip\small\\}
+\newcommand{\@@rubricdefaultend}{\par\rule{\textwidth}{0.2mm}\par\medskip\normalfont}
+
+% Other variations:
+\newcommand{\@@rubricboxedstart}{\medskip\begin{center}\begin{minipage}{0.8\textwidth}\begin{colbox}\small}
+\newcommand{\@@rubricboxedend}{\end{colbox}\end{minipage}\end{center}\par\medskip}
+
+% Currently selected:
+\newcommand{\@@selectedrubricstart}{\@@rubricdefaultstart}
+\newcommand{\@@selectedrubricend}{\@@rubricdefaultend}
+
+%----------------------------------------------------------------------------------------
+% SIGNATURE: DEFAULT AND VARIATIONS
+%----------------------------------------------------------------------------------------
+% Default one:
+\newcommand{\@@signaturedefaultstart}{\medskip\begin{flushright}\rule{0.4\textwidth}{0.2mm}\\\small}
+\newcommand{\@@signaturedefaultend}{\end{flushright}}
+
+% Other variations:
+\newcommand{\@@signaturecenteredstart}{\medskip\begin{center}\rule{0.4\textwidth}{0.2mm}\\\small}
+\newcommand{\@@signaturecenteredend}{\end{center}}
+
+% Currently selected:
+\newcommand{\@@selectedsignaturestart}{\@@signaturedefaultstart}
+\newcommand{\@@selectedsignatureend}{\@@signaturedefaultend}
+
+%----------------------------------------------------------------------------------------
+% SWITCHES FOR THE STYLE VARIATIONS FOR THE USER TO ACTIVATE
+%----------------------------------------------------------------------------------------
+% Title (first one is the default one):
+\DeclareDocumentCommand{\selecttitlea}{}{\renewcommand{\@@selectedtitle}{\@@titlecodea}}
+\DeclareDocumentCommand{\selecttitleb}{}{\renewcommand{\@@selectedtitle}{\@@titlecodeb}}
+\DeclareDocumentCommand{\selecttitlec}{}{\renewcommand{\@@selectedtitle}{\@@titlecodec}}
+\DeclareDocumentCommand{\selecttitled}{}{\renewcommand{\@@selectedtitle}{\@@titlecoded}}
+
+% Rubric (first one is the default one):
+\DeclareDocumentCommand{\selectrubricdefault}{}{
+  \renewcommand{\@@selectedrubricstart}{\@@rubricdefaultstart}
+  \renewcommand{\@@selectedrubricend}{\@@rubricdefaultend}
+}
+\DeclareDocumentCommand{\selectrubricboxed}{}{
+  \renewcommand{\@@selectedrubricstart}{\@@rubricboxedstart}
+  \renewcommand{\@@selectedrubricend}{\@@rubricboxedend}
+}
+
+% Signaure (first one is the default one):
+\DeclareDocumentCommand{\selectsignaturedefault}{}{
+  \renewcommand{\@@selectedsignaturestart}{\@@signaturedefaultstart}
+  \renewcommand{\@@selectedsignatureend}{\@@signaturedefaultend}
+}
+\DeclareDocumentCommand{\selectsignaturecentered}{}{
+  \renewcommand{\@@selectedsignaturestart}{\@@signaturecenteredstart}
+  \renewcommand{\@@selectedsignatureend}{\@@signaturecenteredend}
+}

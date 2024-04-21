@@ -1,5 +1,7 @@
 # Latex Templates
 
+**Note: Re-organising and updating this repository for coherence. It will be tagged soon.**
+
 A (growing) handmade collection of latex templates, classes and style files.
 
 ---
