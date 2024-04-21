@@ -9,7 +9,7 @@
 %------------------------------------------------------------
 % SIUNITX SETUP
 %------------------------------------------------------------
-\sisetup{separate-uncertainty = true}
+\sisetup{separate-uncertainty=true}
 
 %------------------------------------------------------------
 % GROUPS, ALGEBRAS & SETS
@@ -22,6 +22,7 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\A}{\mathbb{A}}
+\newcommand{\F}{\mathbb{F}} % Finite field
 
 % Special spaces and other sets
 \newcommand{\Ball}{\mathbb{B}} % Ball
@@ -30,9 +31,6 @@
 
 \newcommand{\CP}{\mathbb{C}\mathrm{P}} % Complex Projective
 \newcommand{\RP}{\mathbb{R}\mathrm{P}} % Real Projective
-
-\newcommand{\Sphere}[1]{S^{#1}} % Sphere
-\newcommand{\Torus}[1]{T^{#1}} % Torus
 
 % Matrix groups
 \newcommand{\GL}{\mathrm{GL}}
@@ -57,42 +55,59 @@
 \newcommand{\Lie}[1]{\mathfrak{#1}}
 
 % Group theory symbols
-
 \newcommand{\subgroup}{\mathrel{\leq}}
 \newcommand{\nsubgroup}{\mathrel{\trianglelefteq}}
-\DeclareDocumentCommand{\inv}{sm}{
-  \IfBooleanTF{#1} {\paren*{#2}^{-1}} {#2^{-1}}
-}
+\DeclarePairedDelimiter{\cyclic}{\langle}{\rangle}
+\newcommand{\cat}[1]{\mathsf{#1}} % categories
 
 %------------------------------------------------------------
 % VARIOUS BRACKETS
 %------------------------------------------------------------
 % General
-\DeclarePairedDelimiter{\paren}{\lparen}{\rparen}
-\DeclarePairedDelimiter{\cparen}{\lbrace}{\rbrace}
-\DeclarePairedDelimiter{\bparen}{\lbrack}{\rbrack}
+% \DeclarePairedDelimiter{\paren}{\lparen}{\rparen}
+% \DeclarePairedDelimiter{\cparen}{\lbrace}{\rbrace}
+% \DeclarePairedDelimiter{\bparen}{\lbrack}{\rbrack}
+\DeclarePairedDelimiterX{\paren}[1]{\lparen}{\rparen}{\ifblank{#1}{\:\dots\:}{#1}}
+\DeclarePairedDelimiterX{\cparen}[1]{\lbrace}{\rbrace}{\ifblank{#1}{\:\dots\:}{#1}}
+\DeclarePairedDelimiterX{\bparen}[1]{\lbrack}{\rbrack}{\ifblank{#1}{\:\dots\:}{#1}}
 
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-\DeclarePairedDelimiter{\inner}{\langle}{\rangle}
-\DeclarePairedDelimiter{\mean}{\langle}{\rangle}
-\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
-\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
-\DeclarePairedDelimiter{\at}{.}{\rvert}
+% \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+% \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+% \DeclarePairedDelimiter{\inner}{\langle}{\rangle}
+% \DeclarePairedDelimiter{\mean}{\langle}{\rangle}
+% \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+% \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiterX{\abs}[1]{\lVert}{\rVert}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\norm}[1]{\lVert}{\rVert}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\inner}[1]{\langle}{\rangle}{\ifblank{#1}{\:\cdot\:,\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\mean}[1]{\langle}{\rangle}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\ceil}[1]{\lceil}{\rceil}{\ifblank{#1}{\:\cdot\:}{#1}}
+\DeclarePairedDelimiterX{\floor}[1]{\lfloor}{\rfloor}{\ifblank{#1}{\:\cdot\:}{#1}}
+
+\DeclareDocumentCommand{\at}{O{}m}{#1\rvert_{#2}}
+
+% Set brackets
+% Older def.
+% \DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\newcommand\SetSymbol[1][]{\nonscript\:#1\vert\allowbreak\nonscript\:\mathopen{}}
+\providecommand\st{}
+\DeclarePairedDelimiterX{\set}[1]{\lbrace}{\rbrace}{\renewcommand\st{\SetSymbol[\delimsize]}#1}
 
 % Quantum Mechanics
 \DeclarePairedDelimiter{\comm}{\lbrack}{\rbrack}
 \DeclarePairedDelimiter{\acomm}{\lbrace}{\rbrace}
 
+% Dirac brackets
 \DeclarePairedDelimiter{\bra}{\langle}{\rvert}
 \DeclarePairedDelimiter{\ket}{\lvert}{\rangle}
 
-\DeclareDocumentCommand{\braket}{mom}{
-  \IfValueTF{#2}
-    {\left\langle#1\right\rvert#2\left\lvert#3\right\rangle}
-    {\left\langle#1\middle\rvert#3\right\rangle}
-}
+% Older def.
+% \DeclareDocumentCommand{\braket}{mom}{
+%   \IfValueTF{#2}
+%     {\left\langle#1\right\rvert#2\left\lvert#3\right\rangle}
+%     {\left\langle#1\middle\rvert#3\right\rangle}
+% }
+\DeclarePairedDelimiterX{\braket}[3]{\langle}{\rangle}{#1\,\ifblank{#2}{}{\delimsize\vert\,\mathopen{}#2\,}\delimsize\vert\,\mathopen{}#3}
 
 \DeclarePairedDelimiterXPP{\nord}[1]{N}{\lbrace}{\rbrace}{}{#1}
 \DeclarePairedDelimiterXPP{\tord}[1]{T}{\lbrace}{\rbrace}{}{#1}
@@ -125,6 +140,7 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator*{\res}{res} % Residue
+\DeclareMathOperator{\lcm}{lcm}
 
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Inn}{Inn}
@@ -171,7 +187,6 @@
 \DeclareMathOperator{\erf}{erf}
 \DeclareMathOperator{\erfc}{erfc}
 
-
 % Complex Components
 \let\Re\relax
 \let\Im\relax
@@ -186,7 +201,6 @@
 \newcommand{\BigO}{\mathcal{O}} % Big-O notation
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\Der}{\mathrm{Der}} % Derivation
-\newcommand{\F}{\mathbb{F}} % Finite field
 \newcommand{\id}{\mathrm{id}} % Identity element
 \newcommand{\Id}{\mathrm{Id}} % Identity element (another one)
 \newcommand{\Lag}{\mathcal{L}}
@@ -213,7 +227,28 @@
 \newcommand{\lap}{\nabla^2}
 \newcommand{\grad}{\nabla}
 
-% Such that (to be used in set builder notation)
-\newcommand{\st}[1][|]{\,#1\,}
+% \newcommand{\st}[1][|]{\,#1\,} % (older) for the set builder notation
 \newcommand{\closure}[1]{\overline{#1}}
 \newcommand{\interior}[1]{{#1}^{\circ}}
+
+%-------------------------------------------------------------
+% COLOURS
+%-------------------------------------------------------------
+\RequirePackage{xcolor}
+\definecolor{lightgray}{RGB}{211,211,211}
+\definecolor{darkgray}{RGB}{64,64,79}
+\definecolor{gold}{RGB}{255,204,0}
+\definecolor{orange}{RGB}{255,103,0}
+\definecolor{red}{RGB}{255,0,0}
+\definecolor{pink}{RGB}{255,182,193}
+\definecolor{crimson}{RGB}{211,0,63}
+\definecolor{trueblue}{RGB}{0,47,167}
+\definecolor{teal}{RGB}{0,128,128}
+\definecolor{truegreen}{RGB}{0,102,0}
+
+%-------------------------------------------------------------
+% SHORT MACROS
+%-------------------------------------------------------------
+\def\strike{\bgroup \ULdepth=-.55ex \ULset} % Strike through
+\newcommand{\missing}[1]{{\color{red}#1}}
+\newcommand{\keyword}[1]{\textsf{#1}}
