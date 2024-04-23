@@ -13,12 +13,9 @@
 
 % Font options
 \def\@@ptsize{11pt}
-\newtoggle{@@uselibertine}
-
 \DeclareOption{10pt}{\def\@@ptsize{10pt}}
 \DeclareOption{11pt}{\def\@@ptsize{11pt}}
 \DeclareOption{12pt}{\def\@@ptsize{12pt}} % this is the default option
-\DeclareOption{uselibertine}{\toggletrue{@@uselibertine}}
 
 % Ignore all other options
 \DeclareOption*{\PackageWarning{wade}{Unknown '\CurrentOption'}}
@@ -29,7 +26,6 @@
 %----------------------------------------------------------------------------------------
 % GLOBAL TYPOGRAPHY
 %----------------------------------------------------------------------------------------
-% \RequirePackage{lmodern}
 \RequirePackage{microtype}
 \RequirePackage{parskip}
 
@@ -37,9 +33,6 @@
 \RequirePackage[T1]{fontenc}
 
 \RequirePackage{lmodern}
-\iftoggle{@@uselibertine}{\RequirePackage{libertine}\RequirePackage{inconsolata}}{}
-
-% \renewcommand{\sfdefault}{SourceSansPro-LF}
 
 %----------------------------------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
