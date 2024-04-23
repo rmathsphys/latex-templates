@@ -68,69 +68,78 @@
 }
 
 %----------------------------------------------------------------------------------------
+% AUXILIARY MACROS
+%----------------------------------------------------------------------------------------
+\def\@openingvspace{0.75em}
+\def\@closingvspace{0.75em}
+
+%----------------------------------------------------------------------------------------
 % DOCUMENT-WIDE COMMANDS
 %----------------------------------------------------------------------------------------
-% Optional entries
-\let\ufromaddress\relax
-\let\utoaddress\relax
+\providecommand\ufromaddress{}
+\providecommand\utoaddress{}
+\DeclareDocumentCommand{\fromaddress}{m}{ \renewcommand{\ufromaddress}{#1\par\vspace{\@closingvspace}} }
+\DeclareDocumentCommand{\toaddress}{m}{ \renewcommand{\utoaddress}{#1\par\vspace{\@closingvspace}} }
+
 \let\usubject\relax
 \let\udate\relax
-\let\usignaturefile\relax
 \let\usenderinfo\relax
+\DeclareDocumentCommand{\subject}{m}{ \newcommand{\usubject}{\par\vspace{\@closingvspace} {\centering\bfseries#1\par}} }
+\DeclareDocumentCommand{\date}{m}{ \newcommand{\udate}{#1} }
+\DeclareDocumentCommand{\greeting}{m}{ \newcommand{\ugreeting}{#1} }
 
-% Entries with a default value
-\def\uclosingtag{Yours sincerely,}
+\newcommand\uclosingtag{Yours sincerely,}
+\DeclareDocumentCommand{\closingtag}{m}{ \renewcommand{\uclosingtag}{#1} }
+\DeclareDocumentCommand{\sender}{m}{ \newcommand{\usender}{\textbf{#1}} }
+\DeclareDocumentCommand{\senderinfo}{m}{ \newcommand{\usenderinfo}{\newline#1} }
 
-\DeclareDocumentCommand{\fromaddress}{m}{\newcommand{\ufromaddress}{#1}}
-\DeclareDocumentCommand{\toaddress}{m}{\newcommand{\utoaddress}{#1}}
-\DeclareDocumentCommand{\subject}{m}{\newcommand{\usubject}{#1}}
-\DeclareDocumentCommand{\date}{m}{\newcommand{\udate}{#1}}
-\DeclareDocumentCommand{\greeting}{m}{\newcommand{\ugreeting}{#1}}
-\DeclareDocumentCommand{\closingtag}{m}{\renewcommand{\uclosingtag}{\par\vspace*{2mm}\par#1\par\vspace*{4mm}}}
-\DeclareDocumentCommand{\signaturefile}{m}{\newcommand{\usignaturefile}{\par\includegraphics[height=10mm]{#1}\par\vspace*{2mm}}}
-\DeclareDocumentCommand{\sender}{m}{\newcommand{\usender}{\par\textbf{#1}}}
-\DeclareDocumentCommand{\senderinfo}{m}{\newcommand{\usenderinfo}{\newline#1}}
+
+\providecommand\usignatureblock{}
+\DeclareDocumentCommand{\signatureblock}{m}{ \ifblank{#1}{}{\renewcommand{\usignatureblock}{#1\par\vspace{\@closingvspace}}} }
 
 %----------------------------------------------------------------------------------------
 % OPENING SECTOR
 %----------------------------------------------------------------------------------------
-
-\newcommand{\@osdefault}{
-  \begin{flushright}\ufromaddress\\\udate\end{flushright}
+\newcommand{\@osleftright}{
+  \begin{flushright}\ufromaddress\end{flushright}
   \utoaddress
-  \par\vspace*{6mm}
-  \par{\centering\bfseries\usubject\par}\vspace*{5mm}
-  \par\ugreeting
-  \par\vspace*{2mm}
+  \udate
+  \usubject
+  \par\vspace{\@closingvspace}
+  \ugreeting
+  \par\vspace{\@closingvspace}
 }
 
 \newcommand{\@osleft}{
   \ufromaddress
-  \par\udate\par\vspace*{6mm}
-  \par\utoaddress\par\vspace*{4mm}
-  \par{\centering\bfseries\usubject\par}\vspace*{4mm}
+  \utoaddress
+  \udate
+  \usubject
+  \par\vspace{\@closingvspace}
+  \ugreeting
+  \par\vspace{\@closingvspace}
+}
+
+\newcommand{\@osmin}{
+  \udate
+  \par\vspace*{2mm}
   \par\ugreeting
   \par\vspace*{2mm}
 }
 
-\newcommand{\@osmin}{
-  \ufromaddress
-  \par\udate
-  \par\vspace*{2mm}
-  \par\ugreeting
-  \par\vspace*{2mm}
-}
+\let\@osdefault\@osleft
 
 %----------------------------------------------------------------------------------------
 % CLOSING SECTOR
 %----------------------------------------------------------------------------------------
 
 \newcommand{\@closingsector}{
+  \par\vspace{\@closingvspace}
   \uclosingtag
-  \usignaturefile
+  \par\vspace{\@closingvspace}
+  \usignatureblock
   \usender
   \usenderinfo
-  \par\vspace*{6mm}
 }
 
 %----------------------------------------------------------------------------------------
@@ -139,10 +148,10 @@
 \setlength{\parskip}{0.5em}
 \pagestyle{empty}
 
-% \newcommand{\printopening}{\@openingsectora}
-\DeclareDocumentCommand{\printopening}{m}{
-  \expandafter\ifstrequal\expandafter{#1}{left}{\let\@osdefault\relax\@osleft}{}
-  \expandafter\ifstrequal\expandafter{#1}{min}{\let\@osdefault\relax\@osmin}{}
-  \@osdefault
+\DeclareDocumentCommand{\printopening}{O{default}}{
+  \expandafter\ifstrequal\expandafter{#1}{default}{\@osdefault}{}
+  \expandafter\ifstrequal\expandafter{#1}{leftright}{\@osleftright}{}
+  \expandafter\ifstrequal\expandafter{#1}{left}{\@osleft}{}
+  \expandafter\ifstrequal\expandafter{#1}{min}{\@osmin}{}
 }
 \newcommand{\printclosing}{\@closingsector}
