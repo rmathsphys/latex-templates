@@ -3,7 +3,6 @@
 %----------------------------------------------------------------------------------------
 \RequirePackage{xparse} % lots of powerful macros
 \RequirePackage{etoolbox} % lots of powerful macros
-\RequirePackage{graphicx} % for graphics; mainly the signature
 
 %----------------------------------------------------------------------------------------
 % INITIALIZING & HANDLING CLASS OPTIONS
