@@ -11,19 +11,16 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{curie}[2024/03/13 A simple article class for maths and physics]
 
-\def\@@ptsize{10pt}
-\DeclareOption{10pt}{\def\@@ptsize{10pt}} % default option
-\DeclareOption{11pt}{\def\@@ptsize{11pt}}
-\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} %default (in the article cls)
+\DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
 
-\let\@@sftag\relax
-\DeclareOption{sf}{\def\@@sftag{\sffamily}}
-\DeclareOption{nosf}{\let\@@sftag\relax} % default option
-
-\DeclareOption*{\PackageWarning{curie}{Unknown: '\CurrentOption'}}
+\DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
 
-\LoadClass[\@@ptsize]{article} % built on top of the article class
+\LoadClass{article} % built on top of the article class
 
 %------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
