@@ -11,19 +11,16 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{penrose}[2023/12/29 A simple article class for maths and physics]
 
-\def\@@ptsize{10pt}
-\DeclareOption{10pt}{\def\@@ptsize{10pt}} % default option
-\DeclareOption{11pt}{\def\@@ptsize{11pt}}
-\DeclareOption{12pt}{\def\@@ptsize{12pt}}
-
-\let\@@sftag\relax
-\DeclareOption{sf}{\def\@@sftag{\sffamily}}
-\DeclareOption{nosf}{\let\@@sftag\relax} % default option
+\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} %default (in the article cls)
+\DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
 
 \DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
 
-\LoadClass[\@@ptsize]{article} % built on top of the article class
+\LoadClass{article} % built on top of the article class
 
 %------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
@@ -31,7 +28,7 @@
 \RequirePackage[a4paper]{geometry}
   \geometry{nomarginpar}
   \geometry{includeall}
-  \geometry{top=16mm, bottom=22mm, left=34mm, right=34mm}
+  \geometry{top=16mm, bottom=22mm, left=31mm, right=31mm}
   \geometry{headheight=7mm, headsep=6mm, footskip=8mm}
 
 %------------------------------------------------------------
@@ -54,7 +51,7 @@
 \DeclareDocumentCommand{\title}{om}{
   \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
   \newcommand{\utitle}{#2}
-  \newcommand{\@titleline}{{\@@sftag\Large\bfseries\utitle\par}\vspace*{0.2em}}
+  \newcommand{\@titleline}{{\Large\bfseries\utitle\par}\vspace*{0.2em}}
 }
 \DeclareDocumentCommand{\subtitle}{m}{
   \newcommand{\usubtitle}{#1}

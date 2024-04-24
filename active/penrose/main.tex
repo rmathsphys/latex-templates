@@ -1,11 +1,9 @@
-\documentclass[10pt,arar]{penrose}
+\documentclass[11pt]{penrose}
 
 % \usepackage{mathsphystools}
 % \usepackage{thmstyles}
 % \usepackage{graphicx}
 % \graphicspath{{images/}}
-
-\usepackage{lipsum}
 
 \title[Title for the Header]{A Very Long Title That Is Being Used for This Document on Purpose}
 \subtitle{This is an optional subtitle}
@@ -21,9 +19,9 @@
 
 \section{Section Heading}
 \subsection{Subsection Heading}
-Lorem ipsum\footnote{This seems like a good place to add a \texttt{footnote}.} dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. There are two class options. The global font size can be selected using one of \texttt{10pt}, \texttt{11pt}, and \texttt{12pt}. The default value is \texttt{10pt}. Secondly, the titles and section headings can be typeset in sans-serif font family using the \texttt{sf} option. The default is \texttt{nosf}.
+Lorem ipsum\footnote{This seems like a good place to add a \texttt{footnote}.} dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. The global font size can be selected using one of \texttt{10pt}, \texttt{11pt}, and \texttt{12pt}. The default value is \texttt{10pt}. Also accepts the \texttt{draft} and \texttt{final} options as in the standard article class.
 
-The default font size is \texttt{10pt} currently. There are five class-specific commands for the preamble. Table~(\ref{tab:the-only-table}) describes them. \sidenote{Whatever}
+There are five class-specific commands for the preamble. Table~(\ref{tab:the-only-table}) describes them. \sidenote{Whatever}
 \begin{table}[h]
 \centering
 \begin{tabularx}{\linewidth}{p{20mm}D{20mm}X}
@@ -87,28 +85,32 @@ Next, using \texttt{enumerate}:
 
 Also a \texttt{widetext} environment, for the occasions where a wider figure, table or equation needs to be included. This sizing might change slightly in the future versions.
 \begin{widetext}
-  \lipsum[33]
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 \end{widetext}
 
 \subsection{Subsection Heading}
-\lipsum[21]
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
   \subsubsection{Subsubsection Heading}
-  \lipsum[22]
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \section{Section Heading}
-\lipsum[13]
+\newthought{Lorem ipsum dolor sit amet}, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 
 \appendix
+
+% \renewcommand{\theequation}{\thesection.\arabic{equation}}
+% \setcounter{equation}{0}
+
 \section{Appendix Section Heading}
-\lipsum[11]
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \subsection{Appendix Subsection Heading}
-\lipsum[12]
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
   \subsubsection{Appendix Subsubsection Heading}
-  \lipsum[13]
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 \begin{center}
   \vspace*{0.5em}
