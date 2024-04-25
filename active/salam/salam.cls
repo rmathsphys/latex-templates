@@ -11,23 +11,16 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{salam}[2022/11/04 A simple article class for maths and physics]
 
-\def\@@ptsize{11pt}
-\DeclareOption{10pt}{\def\@@ptsize{10pt}}
-\DeclareOption{11pt}{\def\@@ptsize{11pt}} % the default option
-\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} %default (in the article cls)
+\DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
 
-\let\@@sftag\relax
-\DeclareOption{sf}{\def\@@sftag{\sffamily}}
-\DeclareOption{nosf}{\let\@@sftag\relax} % the default option
-
-\def\@@sectag{arar}
-\DeclareOption{arar}{\def\@@sectag{arar}} % the default option
-\DeclareOption{rmal}{\def\@@sectag{rmal}}
-
-\DeclareOption*{\PackageWarning{salam}{Unknown: '\CurrentOption'}}
+\DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
 
-\LoadClass[\@@ptsize]{article} % to be built on top of the article class
+\LoadClass{article} % built on top of the article class
 
 %------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
@@ -187,26 +180,21 @@
 %------------------------------------------------------------
 \RequirePackage{titlesec}
 
-\expandafter\ifstrequal\expandafter{\@@sectag}{rmal}{
-  \renewcommand{\thesection}{\Roman{section}}
-  \renewcommand{\thesubsection}{\Alph{subsection}}
-  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-}{
-  \renewcommand{\thesection}{\arabic{section}}
-  \renewcommand{\thesubsection}{\arabic{subsection}}
-  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+
 
 \titleformat{\section}[hang]
-  {\@@sftag\large\bfseries}{\thetitle.~}
+  {\large\bfseries}{\thetitle.~}
   {2mm}{}
 
 \titleformat{\subsection}[hang]
-  {\@@sftag\bfseries}{\thesection.\thetitle.~}
+  {\bfseries}{\thesection.\thetitle.~}
   {2mm}{}
 
 \titleformat{\subsubsection}[hang]
-  {\@@sftag\itshape}{\thesection.\thesubsection.\thetitle.~}
+  {\itshape}{\thesection.\thesubsection.\thetitle.~}
   {2mm}{}
 
 \let\oldappendix\appendix

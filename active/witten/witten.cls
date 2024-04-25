@@ -11,19 +11,16 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{witten}[2021/07/02]
 
-\def\@@ptsize{11pt}
-\DeclareOption{10pt}{\def\@@ptsize{10pt}}
-\DeclareOption{11pt}{\def\@@ptsize{11pt}} % this is the default option
-\DeclareOption{12pt}{\def\@@ptsize{12pt}} 
+\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} %default (in the article cls)
+\DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
 
-\def\@@draftfinal{final}
-\DeclareOption{draft}{\def\@@draftfinal{draft}}
-\DeclareOption{final}{\def\@@draftfinal{final}} % this is the default option
-
-\DeclareOption*{\PackageWarning{witten}{Unknown '\CurrentOption'}}
-
+\DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
-\LoadClass[a4paper,landscape,twocolumn,oneside,\@@ptsize,\@@draftfinal]{book} % to be built on top of the book class
+
+\LoadClass[a4paper,landscape,twocolumn,oneside]{book} % to be built on top of the book class
 
 %------------------------------------------------------------
 % DOCUMENT INFORMATION COMMANDS
