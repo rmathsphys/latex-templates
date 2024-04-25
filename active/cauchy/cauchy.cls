@@ -11,15 +11,16 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{cauchy}[2022/12/20 A simple article class for maths and physics thesis]
 
-\def\@@ptsize{11pt}
-\DeclareOption{10pt}{\def\@@ptsize{10pt}}
-\DeclareOption{11pt}{\def\@@ptsize{11pt}} % the default option
-\DeclareOption{12pt}{\def\@@ptsize{12pt}}
+\DeclareOption{10pt}{\PassOptionsToClass{\CurrentOption}{article}} %default (in the article cls)
+\DeclareOption{11pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
 
-\DeclareOption*{\PackageWarning{cauchy}{Unknown: '\CurrentOption'}}
+\DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
 
-\LoadClass[\@@ptsize]{article} % to be built on top of the article class
+\LoadClass{article} % built on top of the article class
 
 %------------------------------------------------------------
 % STANDARD PAGE LAYOUTS
