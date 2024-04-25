@@ -1,24 +1,7 @@
-\documentclass[11pt]{penrose}
-
-% \usepackage{mathsphystools}
-% \usepackage{thmstyles}
-% \usepackage{graphicx}
-% \graphicspath{{images/}}
-
-\title[Title for the Header]{A Very Long Title That Is Being Used for This Document on Purpose}
-\subtitle{This is an optional subtitle}
-\author{Author M. Person}
-\affiliation{Some Affiliation, City}
-\date{\today}
-\begin{document}
-
-\maketitle
-\begin{abstract}
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-\end{abstract}
+%!TEX root = ../main.tex
 
 \section{Section Heading}
-\newthought{The first few words} of a new section can be typeset in a different style by using the \verb|\newthought{...}| command. The \texttt{penrose.cls} class file has five class options: three font sizes \texttt{10pt} (default), \texttt{11pt}, and \texttt{12pt}, and a switch to activate the \texttt{draft} mode or revert to \texttt{final} (default).
+\newthought{The first few words} of a new section can be typeset in a different style by using the \verb|\newthought{...}| command. The \texttt{curie.cls} class file has five class options: three font sizes \texttt{10pt} (default), \texttt{11pt}, and \texttt{12pt}, and a switch to activate the \texttt{draft} mode or revert to \texttt{final} (default).
 
 Customised styles for tables, captions and lists have been added, along with several typographical enhancements through the use of \texttt{parskip}, \texttt{microtype} and \texttt{lmodern}. The \texttt{hyperref} package has been loaded in the class file with some custom settings.
 
@@ -70,28 +53,3 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 \section{Section Heading}
 \newthought{Lorem ipsum dolor sit amet}, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-\appendix
-
-% \renewcommand{\theequation}{\thesection.\arabic{equation}}
-% \setcounter{equation}{0}
-
-\section{Appendix Section Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\subsection{Appendix Subsection Heading}
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-  \subsubsection{Appendix Subsubsection Heading}
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\begin{center}
-  \vspace*{0.5em}
-  \rule{0.8\textwidth}{0.8pt}
-\end{center}
-
-\nocite{*}
-{\small \bibliography{references}}
-
-\end{document}

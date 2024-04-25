@@ -1,0 +1,37 @@
+\documentclass[11pt]{curie}
+
+% \usepackage{mathsphystools}
+% \usepackage{thmstyles}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{lipsum}
+
+\title[Title for the Header]{A Very Long Title That Is Being Used for This Document on Purpose}
+\subtitle{This is an optional subtitle}
+\author{Author M. Person}
+\affiliation{Some Affiliation, City}
+\date{\today}
+
+\begin{document}
+
+\pagestyle{fancy-first}
+\input{contents/coverpage}
+\tableofcontents
+\clearpage
+
+\input{contents/report}
+
+\begin{center}
+\vspace*{0.5em}
+\rule{0.8\textwidth}{0.8pt}
+\end{center}
+
+\clearpage
+\nocite{*}
+{\small \bibliography{references}}
+
+\appendix
+\input{contents/appendix-a}
+
+\end{document}
