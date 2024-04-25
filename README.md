@@ -8,13 +8,17 @@ A (growing) handmade collection of latex templates, classes and style files.
 
 ### Currently Active Projects:
 + `wade`: For simple yet elegant letters.
-+ `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy).
-+ `dirac`: For beautiful and sophisticated books. Primarily academic. Highly customisable.
-+ `witten`: A unique two-column landscape layout for books and notes. Primarily academic. Highly customisable.
+
 + `penrose:` An elegent but broadly applicable class for general purpose articles, essays and shorter assignments.
-+ `curie:` A multifunctional class for reports and longer assignments.
 + `salam:` Inspired by certain OUP books, but made for articles and handouts.
++ `curie:` A multifunctional class for reports and longer assignments.
+
 + `cauchy:` Clutter-free, simple and extendible. For lecture notes, general purpose theses and long-form essays.
+
++ `witten`: A unique two-column landscape layout for books and notes. Primarily academic. Highly customisable.
++ `dirac`: For beautiful and sophisticated books. Primarily academic. Highly customisable.
++ `hilbert`: For beautiful yet simple books. (Not aimed to be maths-heavy).
+
 
 ### Custom Header Files:
 Based on how the author structures their documents.
