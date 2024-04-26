@@ -43,6 +43,7 @@
 \RequirePackage{lmodern}
 \RequirePackage{microtype}
 \RequirePackage{parskip}
+\RequirePackage{setspace}
 \RequirePackage{changepage}
 
 \RequirePackage[defaultsans, scale=0.9]{lato}

@@ -9,8 +9,6 @@
 \usepackage{graphicx}
   \graphicspath{{images/}}
 
-% \geometry{showframe}
-
 \begin{document}
 
 \frontmatter
@@ -21,9 +19,11 @@
   
   % \blankpage
   % OR
+  % \blankpage[]
+  % OR
   % \artpage{1000.png}
   % OR
-  \artpage[0.75\linewidth]{1000.png}[Caption]
+  \artpage[0.5\linewidth]{1000.png}[Caption]
   
   \input{additional/fulltitle}
   \input{additional/copyright}
@@ -59,6 +59,6 @@
 
 \clearpage
 \nocite{*}
-\printbibliography{references}
+\printbibliography{refs}
 
 \end{document}
