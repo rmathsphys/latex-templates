@@ -48,28 +48,6 @@
 \let\@affiliationline\relax
 \let\@dateline\relax
 
-% \DeclareDocumentCommand{\title}{om}{
-%   \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
-%   \newcommand{\utitle}{#2}
-%   \newcommand{\@titleline}{{\Large\bfseries\utitle\par}\vspace*{1em}}
-% }
-% \DeclareDocumentCommand{\subtitle}{m}{
-%   \newcommand{\usubtitle}{#1}
-%   \newcommand{\@subtiline}{{\large\usubtitle\par}}
-% }
-% \DeclareDocumentCommand{\author}{m}{
-%   \newcommand{\uauthor}{#1}
-%   \newcommand{\@authorline}{\vspace*{1em}{\uauthor\par}}
-% }
-% \DeclareDocumentCommand{\affiliation}{m}{
-%   \newcommand{\uaffiliation}{#1}
-%   \newcommand{\@affiliationline}{\vspace*{0.5em}{\itshape\uaffiliation\par}}
-% }
-% \DeclareDocumentCommand{\date}{m}{
-%   \newcommand{\udate}{#1}
-%   \newcommand{\@dateline}{\vspace*{0.5em}{(Dated: #1)\par}}
-% }
-
 \DeclareDocumentCommand{\title}{om}{
   \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
   \newcommand{\utitle}{#2}
