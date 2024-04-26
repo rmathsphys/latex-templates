@@ -37,7 +37,6 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
-\RequirePackage{inconsolata}
 \RequirePackage{setspace}
 \RequirePackage{parskip}
 \RequirePackage{microtype}
@@ -49,10 +48,32 @@
 \let\@affiliationline\relax
 \let\@dateline\relax
 
+% \DeclareDocumentCommand{\title}{om}{
+%   \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
+%   \newcommand{\utitle}{#2}
+%   \newcommand{\@titleline}{{\Large\bfseries\utitle\par}\vspace*{1em}}
+% }
+% \DeclareDocumentCommand{\subtitle}{m}{
+%   \newcommand{\usubtitle}{#1}
+%   \newcommand{\@subtiline}{{\large\usubtitle\par}}
+% }
+% \DeclareDocumentCommand{\author}{m}{
+%   \newcommand{\uauthor}{#1}
+%   \newcommand{\@authorline}{\vspace*{1em}{\uauthor\par}}
+% }
+% \DeclareDocumentCommand{\affiliation}{m}{
+%   \newcommand{\uaffiliation}{#1}
+%   \newcommand{\@affiliationline}{\vspace*{0.5em}{\itshape\uaffiliation\par}}
+% }
+% \DeclareDocumentCommand{\date}{m}{
+%   \newcommand{\udate}{#1}
+%   \newcommand{\@dateline}{\vspace*{0.5em}{(Dated: #1)\par}}
+% }
+
 \DeclareDocumentCommand{\title}{om}{
   \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
   \newcommand{\utitle}{#2}
-  \newcommand{\@titleline}{{\Large\bfseries\utitle\par}\vspace*{1em}}
+  \newcommand{\@titleline}{{\Large\bfseries\utitle\par}\vspace*{0.75em}}
 }
 \DeclareDocumentCommand{\subtitle}{m}{
   \newcommand{\usubtitle}{#1}
@@ -60,15 +81,15 @@
 }
 \DeclareDocumentCommand{\author}{m}{
   \newcommand{\uauthor}{#1}
-  \newcommand{\@authorline}{\vspace*{1em}{\uauthor\par}}
+  \newcommand{\@authorline}{\vspace*{0.75em}{\uauthor\par}}
 }
 \DeclareDocumentCommand{\affiliation}{m}{
   \newcommand{\uaffiliation}{#1}
-  \newcommand{\@affiliationline}{\vspace*{0.5em}{\itshape\uaffiliation\par}}
+  \newcommand{\@affiliationline}{\vspace*{0.25em}{\itshape\uaffiliation\par}}
 }
 \DeclareDocumentCommand{\date}{m}{
   \newcommand{\udate}{#1}
-  \newcommand{\@dateline}{\vspace*{0.5em}{(Dated: #1)\par}}
+  \newcommand{\@dateline}{\vspace*{0.25em}{#1\par}}
 }
 
 %------------------------------------------------------------
@@ -132,7 +153,7 @@
     \@subtiline
     \@authorline
     \@affiliationline
-    \@dateline\vspace*{0.7em}
+    \@dateline\vspace*{0.5em}
   \end{minipage}\par
 }
 
@@ -176,60 +197,10 @@
 \newmdenv[hidealllines=true, backgroundcolor=lightgray, skipabove=10pt, skipbelow=10pt, innerleftmargin=8pt, innerrightmargin=8pt, innertopmargin=10pt, innerbottommargin=10pt]{colbox}
 
 %------------------------------------------------------------
-% HEADINGS: SECTIONS & SUBSECTIONS
-%------------------------------------------------------------
-\RequirePackage{titlesec}
-
-\renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thesubsection}{\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-
-
-\titleformat{\section}[hang]
-  {\large\bfseries}{\thetitle.~}
-  {2mm}{}
-
-\titleformat{\subsection}[hang]
-  {\bfseries}{\thesection.\thetitle.~}
-  {2mm}{}
-
-\titleformat{\subsubsection}[hang]
-  {\itshape}{\thesection.\thesubsection.\thetitle.~}
-  {2mm}{}
-
-\let\oldappendix\appendix
-\renewcommand{\appendix}{
-  \oldappendix
-  \renewcommand{\thesection}{\Alph{section}}
-  \renewcommand{\thesubsection}{\arabic{subsection}}
-  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
-  \titleformat{\section}[hang]
-  {\large\bfseries}{\appendixname~\thesection .}
-  {2mm}{}
-  \titleformat{\subsubsection}[hang]
-  {\itshape}{\thesection.\thesubsection.\thetitle.~}
-  {2mm}{}
-}
-
-%------------------------------------------------------------
 % TABLE OF CONTENTS
 %------------------------------------------------------------
 \RequirePackage{titletoc}
-
 \setcounter{tocdepth}{2}
-\titlecontents{section}
-  [5mm]
-  {\large\vspace{3mm}}
-  {\thecontentslabel.\hspace*{2mm}}
-  {}
-  {\titlerule*[2mm]{.}\contentspage}
-
-\titlecontents{subsection}
-  [8mm]
-  {\large\vspace{3mm}}
-  {\thecontentslabel.\hspace*{2mm}}
-  {}
-  {\titlerule*[2mm]{.}\contentspage}
 
 %------------------------------------------------------------
 % BOXES & MARGIN BOXES & SIDENOTES
@@ -252,9 +223,10 @@
     \etocsettocstyle{}{} % clear default headings
     \etocsetnexttocdepth{section} % show entries down to section level
     \etocsetstyle{section}
-      {\parindent -4mm}
-      {\leftskip 4mm}
-      {\bfseries\small\etocnumber.\hspace*{2mm}\etocname\nobreak\hspace*{2mm}\titlerule*[2mm]{.}\hspace*{2mm}\nobreak\etocpage\par\vspace*{1mm}}
+      {\bfseries\small\parindent -4mm}
+      {\makebox[5mm][c]{\etocnumber}\hspace*{2mm}}
+      {\etocname\nobreak\hspace*{1mm}{\normalfont\small\titlerule*[1.5mm]{.}}\hspace*{1mm}\nobreak\etocpage
+      \par\vspace*{1mm}}
       {}
     \marginnote{\localtableofcontents}[#1] % display the toc
   \endgroup
