@@ -2,34 +2,25 @@
 \documentclass[10pt]{witten}
 
 \usepackage{lipsum}
-\usepackage{changepage}
 
 \input{additional/metadata.tex} % document properties
 
 \usepackage{graphicx}
-  \graphicspath{{images/}}
+\graphicspath{{images/}}
 
 \begin{document}
 
 \frontmatter
   \onecolumn
-  \halftitlepage
-  % OR
-  % \halftitlepage[Custom Title]
+  \halftitlepage % \halftitlepage[Custom Title]
+  % \artpage[0.5\linewidth]{1000.png}[Caption] % \blankpage OR \blankpage[] OR \artpage{1000.png}
   
-  % \blankpage
-  % OR
-  % \blankpage[]
-  % OR
-  % \artpage{1000.png}
-  % OR
-  \artpage[0.5\linewidth]{1000.png}[Caption]
-  
-  \input{additional/fulltitle}
+  \input{additional/coverpage}
   \input{additional/copyright}
   \input{additional/dedication}
   
   \twocolumn
+  \setcounter{page}{0}
   \pagestyle{fancy-pagenum}
   \maintoc
 
@@ -37,21 +28,17 @@
   \input{additional/preface}
 
 \mainmatter
-  \part{Physics}
+  \part{Lilac}
   \input{chapters/chapter-namea.tex}
   \input{chapters/chapter-nameb.tex}
   \input{chapters/chapter-namec.tex}
-  \input{chapters/chapter-named.tex}
 
-  \part[Biology]{Chemistry}
-  \input{chapters/chapter-namea.tex}
+  \part[Teal]{Maroon}
   \input{chapters/chapter-nameb.tex}
   \input{chapters/chapter-namec.tex}
-  \input{chapters/chapter-named.tex}
 
 \appendix
   \input{chapters/appendix-namea.tex}
-  \input{chapters/appendix-nameb.tex}
 
 \backmatter
   \input{additional/acknowledgements}

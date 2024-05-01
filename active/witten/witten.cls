@@ -17,7 +17,7 @@
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
 
-\DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
+\DeclareOption*{\PackageWarning{witten}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
 
 \LoadClass[a4paper,landscape,twocolumn,oneside]{book} % to be built on top of the book class
@@ -26,8 +26,14 @@
 % DOCUMENT INFORMATION COMMANDS
 %------------------------------------------------------------
 \DeclareDocumentCommand{\date}{m}{\newcommand{\udate}{#1}\renewcommand{\@date}{#1}}
-\DeclareDocumentCommand{\title}{m}{\newcommand{\utitle}{#1}\renewcommand{\@title}{#1}}
-\DeclareDocumentCommand{\title}{om}{\newcommand{\ushorttitle}{#1}\newcommand{\utitle}{#2}\renewcommand{\@title}{#2}}
+
+\DeclareDocumentCommand{\title}{om}{
+  \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
+  \newcommand{\utitle}{#2}
+  \newcommand{\@titleline}{{\Large\bfseries\utitle\par}\vspace*{0.2em}}
+}
+\DeclareDocumentCommand{\subtitle}{m}{\newcommand{\usubtitle}{#1}}
+
 \DeclareDocumentCommand{\author}{m}{\newcommand{\uauthor}{#1}\renewcommand{\@author}{#1}}
 \DeclareDocumentCommand{\affiliation}{m}{\newcommand{\uaffiliation}{#1}}
 \DeclareDocumentCommand{\isbn}{m}{\newcommand{\uisbn}{#1}}
@@ -46,7 +52,7 @@
 \RequirePackage{setspace}
 \RequirePackage{changepage}
 
-\RequirePackage[defaultsans, scale=0.9]{lato}
+% \RequirePackage[defaultsans, scale=0.9]{lato}
 
 %------------------------------------------------------------
 % COLOURS
@@ -161,7 +167,7 @@
 
 % Default style for parts
 \titleformat{\part}[display]
-  {\centering\sffamily}
+  {\centering}
   {\LARGE\bfseries\partname\ \thepart}
   {0mm}
   {\bfseries\fontsize{38}{40}\selectfont}
@@ -181,22 +187,22 @@
     \IfBooleanTF{#1}
       {
         \addcontentsline{toc}{chapter}{#2}
-        \phantom{{\sffamily\large\bfseries\@@chapterlable~\thechapter.}}
+        \phantom{{\large\bfseries\@@chapterlable~\thechapter.}}
       }
       {
         \stepcounter{chapter}
         \addcontentsline{toc}{chapter}{\thechapter.~#2}
-        {\sffamily\large\bfseries\@@chapterlable~\thechapter.}
+        {\large\bfseries\@@chapterlable~\thechapter.}
       }
     \par\vspace*{1.5em}
-    {\sffamily\Huge\bfseries #2}
+    {\Huge\bfseries #2}
     \par\vspace*{7.5em}
   \markboth{\thechapter\ #2}{}
   \endgroup
 }
 
-\titleformat*{\section}{\sffamily\bfseries\Large}
-\titleformat*{\subsection}{\sffamily\bfseries\large}
+\titleformat*{\section}{\bfseries\Large}
+\titleformat*{\subsection}{\bfseries\large}
 
 %------------------------------------------------------------
 % LOCAL TABLE OF CONTENTS
@@ -229,9 +235,7 @@
 %------------------------------------------------------------
 % VARIOUS RULERS, SEPARATORS & DIVIDERS
 %------------------------------------------------------------
-\newcommand{\rulethick}[1][darkgray]{\par\textcolor{#1}{\rule{\linewidth}{4pt}}\par}
-\newcommand{\rulethin}[1][black]{\par\textcolor{#1}{\rule{\linewidth}{1pt}}\par}
-
+\newcommand{\widerule}[1][darkgray]{\par\textcolor{#1}{\rule{\linewidth}{1pt}}\par}
 
 %------------------------------------------------------------
 % THE BOX
@@ -244,6 +248,8 @@
 % ENV,CMD: GENERAL PURPOSE; ASIDE, TEXTBOX, SUMMARY, EXERCISES
 %------------------------------------------------------------
 
+\DeclareDocumentCommand{\newthought}{m}{{\scshape#1}}
+
 % usage: \being{aside}[heading]...\end{aside}
 \newenvironment{aside}[1][Aside:]
   {\par\sffamily\textbf{#1\ }}{\normalfont\par}
@@ -251,21 +257,6 @@
 % usage: \begin{textbox}[colour]...\end{textbox}
 \newenvironment{textbox}[1][lightgray]
   {\begin{colbox}[backgroundcolor=#1]}{\end{colbox}}
-
-% usage: \begin{summary}...\end{summary}
-\newenvironment{summary}
-  {\begin{colbox}\setlist[itemize]{leftmargin=*}}{\end{colbox}}
-
-% usage: \begin{problems}[heading]\item...\item...\end{problems}
-\newenvironment{problems}[1][Exercises:]{
-  \rulethick\vspace*{-3mm}
-  \setlist[enumerate,1]{label=(\thechapter.\arabic*)}
-  \setlist[enumerate,2]{label=(\alph*)}
-  \section*{#1}
-  \begin{enumerate}
-}{
-  \end{enumerate}
-}
 
 %------------------------------------------------------------
 % PAGES: OPTIONAL HALF-TITLE PAGE, BLANK & ART PAGES
@@ -305,6 +296,8 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{D}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 %------------------------------------------------------------
 % BIBLIOGRAPHY
