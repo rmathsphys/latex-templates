@@ -17,7 +17,7 @@
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
 
-\DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
+\DeclareOption*{\PackageWarning{dirac}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
 
 \LoadClass{book} % to be built on top of the book class
@@ -26,8 +26,14 @@
 % DOCUMENT INFORMATION COMMANDS
 %------------------------------------------------------------
 \DeclareDocumentCommand{\date}{m}{\newcommand{\udate}{#1}\renewcommand{\@date}{#1}}
-\DeclareDocumentCommand{\title}{m}{\newcommand{\utitle}{#1}\renewcommand{\@title}{#1}}
-\DeclareDocumentCommand{\title}{om}{\newcommand{\ushorttitle}{#1}\newcommand{\utitle}{#2}\renewcommand{\@title}{#2}}
+
+\DeclareDocumentCommand{\title}{om}{
+  \IfValueTF{#1}{\newcommand{\ushorttitle}{#1}}{\newcommand{\ushorttitle}{#2}}
+  \newcommand{\utitle}{#2}
+  \newcommand{\@titleline}{{\Large\bfseries\utitle\par}\vspace*{0.2em}}
+}
+\DeclareDocumentCommand{\subtitle}{m}{\newcommand{\usubtitle}{#1}}
+
 \DeclareDocumentCommand{\author}{m}{\newcommand{\uauthor}{#1}\renewcommand{\@author}{#1}}
 \DeclareDocumentCommand{\affiliation}{m}{\newcommand{\uaffiliation}{#1}}
 \DeclareDocumentCommand{\isbn}{m}{\newcommand{\uisbn}{#1}}
@@ -43,6 +49,8 @@
 \RequirePackage{lmodern}
 \RequirePackage{microtype}
 \RequirePackage{parskip}
+\RequirePackage{setspace}
+% \RequirePackage{changepage}
 
 %------------------------------------------------------------
 % COLOURS
@@ -200,6 +208,8 @@
 \DeclareDocumentEnvironment{partback}{O{#2} m}
   {\setlayout{extranarrow}\@openrightfalse\part*[#1]{#2}\thispagestyle{empty}}{\@openrighttrue\setlayout{default}}
 
+% Table of contents
+\let\maintoc\tableofcontents
 
 % Default style for chapters
 \titleformat{\chapter}[display]
@@ -224,6 +234,27 @@
 % Force marginnotes to follow default text alignment
 \renewcommand*{\raggedleftmarginnote}{}
 \renewcommand*{\raggedrightmarginnote}{}
+
+%------------------------------------------------------------
+% LOCAL TABLE OF CONTENTS
+%------------------------------------------------------------
+\RequirePackage{etoc}
+\newcommand{\localtoc}{
+  \begingroup
+    \etocsettocstyle{}{} % clear default headings
+    \etocsetnexttocdepth{section} % show entries down to section level
+    \etocsetstyle{section}
+      {}
+      {}
+      {
+        \bfseries\small\etocnumber\hspace*{2mm}\etocname\nobreak
+        \hskip5pt\dotfill\hskip5pt\nobreak
+        \etocpage\par\vspace*{1mm}
+      }
+      {}
+    \localtableofcontents
+  \endgroup
+}
 
 %------------------------------------------------------------
 % CAPTIONS
@@ -257,9 +288,7 @@
 %------------------------------------------------------------
 % VARIOUS RULERS, SEPARATORS & DIVIDERS
 %------------------------------------------------------------
-\newcommand{\rulethick}[1][darkgray]{\par\textcolor{#1}{\rule{\linewidth}{4pt}}\par}
-\newcommand{\rulethin}[1][black]{\par\textcolor{#1}{\rule{\linewidth}{1pt}}\par}
-
+\newcommand{\widerule}[1][darkgray]{\par\textcolor{#1}{\rule{\linewidth}{1pt}}\par}
 
 %------------------------------------------------------------
 % THE BOX
@@ -271,16 +300,19 @@
 %------------------------------------------------------------
 % ENV,CMD: GENERAL PURPOSE; QUOTE, ASIDE, MARGINBOX, TEXTBOX, WIDE TEXT, SUMMARY
 %------------------------------------------------------------
-% usage: \being{quote}...\end{quote}
-\RequirePackage{changepage}
 
-\renewenvironment{quote}
-  {\begin{adjustwidth}{0.1\textwidth}{0.1\textwidth}}{\end{adjustwidth}}
+\DeclareDocumentCommand{\newthought}{m}{{\scshape#1}}
 
 % usage: \being{aside}[heading]...\end{aside}
 \newenvironment{aside}[1][Aside:]
   {\par\sffamily\textbf{#1\ }}{\normalfont\par}
 
+% usage: \begin{textbox}[colour]...\end{textbox}
+\newenvironment{textbox}[1][lightgray]
+  {\begin{colbox}[backgroundcolor=#1]}{\end{colbox}}
+
+\renewenvironment{quote}
+  {\begin{adjustwidth}{0.1\textwidth}{0.1\textwidth}}{\end{adjustwidth}}
 
 \let\oldmarginnote\marginnote
 % \renewcommand{\marginnote}[1]{\oldmarginnote{\footnotesize#1}}
@@ -289,17 +321,9 @@
 \newcommand{\marginbox}[1]
   {\oldmarginnote{\begin{colbox}\footnotesize#1\end{colbox}}}
 
-% usage: \begin{textbox}[colour]...\end{textbox}
-\newenvironment{textbox}[1][lightgray]
-  {\begin{colbox}[backgroundcolor=#1]}{\end{colbox}}
-
 % usage: \begin{widetext}[colour]...\end{widetext}
 \newenvironment{widetext}
   {\begin{adjustwidth}{0mm}{-\marginparsep-\marginparwidth}}{\end{adjustwidth}}
-
-% usage: \begin{summary}...\end{summary}
-\newenvironment{summary}
-  {\begin{colbox}\setlist[itemize]{leftmargin=*}}{\end{colbox}}
 
 %------------------------------------------------------------
 % ENV: FULL WIDTH, TWO COLUMN EXERCISES
@@ -357,6 +381,8 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{D}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 %------------------------------------------------------------
 % BIBLIOGRAPHY
