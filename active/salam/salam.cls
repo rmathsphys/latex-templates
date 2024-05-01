@@ -17,7 +17,7 @@
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{final}{\PassOptionsToClass{\CurrentOption}{article}}
 
-\DeclareOption*{\PackageWarning{penrose}{Unknown: '\CurrentOption'}}
+\DeclareOption*{\PackageWarning{salam}{Unknown: '\CurrentOption'}}
 \ProcessOptions\relax
 
 \LoadClass{article} % built on top of the article class
