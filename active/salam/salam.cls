@@ -162,8 +162,8 @@
 % MISC USEFUL BITS
 %------------------------------------------------------------
 \bibliographystyle{naturemag}
-% \bibliographystyle{ieeetr}
-% \bibliographystyle{abbrv}
+\usepackage[square,numbers,comma,sort&compress]{natbib}
+\renewcommand{\refname}{References}
 \let\oldfootnote\footnote
 \let\openbox\relax
 

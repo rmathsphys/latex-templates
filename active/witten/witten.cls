@@ -186,7 +186,7 @@
   \begingroup
     \IfBooleanTF{#1}
       {
-        \addcontentsline{toc}{chapter}{#2}
+        % \addcontentsline{toc}{chapter}{#2}
         \phantom{{\large\bfseries\@@chapterlable~\thechapter.}}
       }
       {
@@ -303,6 +303,8 @@
 % BIBLIOGRAPHY
 %------------------------------------------------------------
 \bibliographystyle{naturemag}
+\usepackage[square,numbers,comma,sort&compress]{natbib}
+\RequirePackage[nottoc]{tocbibind}
 
 \DeclareDocumentCommand{\printbibliography}{m}{
   \clearpage

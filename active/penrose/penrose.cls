@@ -158,7 +158,8 @@
 %------------------------------------------------------------
 % MISC USEFUL BITS
 %------------------------------------------------------------
-\bibliographystyle{elsarticle-num}
+\bibliographystyle{naturemag}
+\usepackage[square,numbers,comma,sort&compress]{natbib}
 \let\openbox\relax
 
 %------------------------------------------------------------

@@ -388,6 +388,8 @@
 % BIBLIOGRAPHY
 %------------------------------------------------------------
 \bibliographystyle{naturemag}
+\usepackage[square,numbers,comma,sort&compress]{natbib}
+\RequirePackage[nottoc]{tocbibind}
 
 \DeclareDocumentCommand{\printbibliography}{m}{
   \clearpage

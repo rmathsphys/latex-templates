@@ -180,8 +180,11 @@
 %------------------------------------------------------------
 % MISC USEFUL BITS
 %------------------------------------------------------------
-\bibliographystyle{elsarticle-num}
+\bibliographystyle{naturemag}
+\usepackage[square,numbers,comma,sort&compress]{natbib}
 \renewcommand{\refname}{Bibliography}
+
+\RequirePackage[nottoc]{tocbibind}
 \let\openbox\relax
 
 \newcommand{\frontmatter}{
